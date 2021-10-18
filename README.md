@@ -17,6 +17,7 @@ En este fichero se realiza la detección y el reconocimiento facial con las libr
   - Puede representar características locales en las imágenes.
   - Es posible obtener grandes resultados principalmente en un entorno controlado.
   - Es robusto frente a transformaciones monótonas de escala de grises.
+
 A pesar de las ventajas de cada algoritmo de reconocimiento, ninguno de ellos aporta los resultados necesarios para el proyecto, ya que el reconocimiento suele dar erróneo cuando el programa se ejecuta con imágenes de test fotografiadas en entornos distintos que las imágenes con las que se ha entrenado el modelo.
 
 
