@@ -22,7 +22,7 @@ A pesar de las ventajas de cada algoritmo de reconocimiento, ninguno de ellos ap
 
 
 ## DetectFaces.py y DetectFaces_Video.py
-Estos dos archivos contienen código casi idéntico, con la diferencia de que uno es para detectar rostros en imágenes y el otro en vídeos, streamings y cámaras externas. Para ello se utiliza Deep Learning con OpenCV. En este caso, se utiliza un modelo entrenado con Caffe, un marco de aprendizaje profundo creado pensando en la expresión, la velocidad y la modularidad. El código está basado en la explicación de Adrian Rosebrock, en su artículo "Face Detection with OpenCV and deep learning". El detector facial de deep learning de OpenCV se basa en el marco del Single-Shot Detector (SSD) con una red base ResNet.
+Estos dos archivos contienen código casi idéntico, con la diferencia de que uno es para detectar rostros en imágenes y el otro en vídeos, streamings y cámaras externas. Para ello, se utiliza Deep Learning con OpenCV. En este caso, se utiliza un modelo entrenado con Caffe, un marco de aprendizaje profundo creado pensando en la expresión, la velocidad y la modularidad. El código está basado en la explicación de Adrian Rosebrock, en su artículo "Face Detection with OpenCV and deep learning". El detector facial de deep learning de OpenCV se basa en el marco del Single-Shot Detector (SSD) con una red base ResNet.
 
 Para la ejecución del código, serán necesarios dos tipos de archivos, que deberán especificarse en los parámetros del mismo:
 - .protxt: define la arquitectura del modelo (es decir, las propias capas que forman la Deep Neural Network). Para este proyecto se ha usado el documento deploy.prototxt.txt, extraído del repositorio https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector.
