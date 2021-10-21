@@ -1,6 +1,17 @@
 # TFG_FaceRecognition
 Este repositorio recoge las pruebas realizadas durante la duración de mi Trabajo de Fin de Grado, el cual está basado en el reconocimiento facial. Se profundizará con diferentes técnicas de detección, procesamiento y reconocimiento del rostro a lo largo del proyecto. El repositario se actualizará iterativamente con nuevos ficheros y se explicarán las conclusiones obtenidas en el correspondiente README.
 
+## Datasets
+Se han escogido dos bases de datos para hacer las pruebas de Face Detection y Face Recognition con imágenes.
+
+### LFW
+Labeled Faces in the Wild es una base de datos de fotografías de caras de celebridades diseñada para estudiar el problema del reconocimiento facial sin restricciones. El conjunto de datos contiene más de 13.000 imágenes de caras recogidas de la web y cada rostro está etiquetado con el nombre de la persona. Los rostros han sido detectados por el detector de rostros Viola-Jones.
+
+LFW contiene cuatro conjuntos diferentes de imágenes, y se ha escogido LFW-a, conjunto en el cual se ha aplicado un método de alineación a las imágenes para facilitar el proceso de detección y reconocimiento.
+
+### UTK Face
+Este dataset es un conjunto de datos de rostros a gran escala con un amplio rango de edad (entre 0 y 116 años). El conjunto de datos consta de más de 20.000 imágenes faciales con anotaciones de edad, sexo y origen étnico en el nombre de cada fotografía. Las imágenes cubren una gran variación en cuanto a pose, expresión facial, iluminación, oclusión, resolución, etc. A diferencia de la base de datos anterior, las caras fotografiadas de UTK Face son de personas anónimas, y el objetivo es hacer pruebas con la gran variedad de expresiones, etnias y edades de las personas para comprobar hasta dónde es capaz de llegar el detector de rostros.
+
 ## FirstTests.py
 En este fichero se realiza la detección y el reconocimiento facial con las librerías OpenCV y dlib. Han sido las primeras pruebas realizadas en el trabajo, por lo que se han utilizado las técnicas más antiguas, que son Haar Cascades (Viola-Jones) y HOG para la detección y EigenFaces, Fisherfaces y LBP para el reconocimiento.
 ### Detección facial:
