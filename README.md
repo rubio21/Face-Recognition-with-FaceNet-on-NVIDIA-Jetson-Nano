@@ -32,7 +32,7 @@ En este fichero se realiza la detección y el reconocimiento facial con las libr
 A pesar de las ventajas de cada algoritmo de reconocimiento, ninguno de ellos aporta los resultados necesarios para el proyecto, ya que el reconocimiento suele dar erróneo cuando el programa se ejecuta con imágenes de test fotografiadas en entornos distintos que las imágenes con las que se ha entrenado el modelo.
 
 
-## DetectFaces.py
+## DetectFaces.py y DetectFacesVideo.py
 Estos dos archivos contienen código casi idéntico, con la diferencia de que uno es para detectar rostros en imágenes y el otro en vídeos, streamings y cámaras externas. Para ello, se utiliza Deep Learning con OpenCV, concretamente se hace a partir de un modelo entrenado con TensorFlow. 
 
 Para la ejecución del código, serán necesarios dos tipos de archivos:
