@@ -38,6 +38,7 @@ Estos dos archivos contienen código casi idéntico, con la diferencia de que un
 Para la ejecución del código, serán necesarios dos tipos de archivos:
 - opencv_face_detector_uint8.pb: contiene el modelo.
 - opencv_face_detector.pbtxt: contiene la configuración para el modelo anterior.
+
 Ambos, extraídos del repositorio https://github.com/deepme987/face-recognition-python
 
 Para el proceso se hace uso de una BLOB (Binary Large Object), que es un elemento que se utiliza para almacenar datos de gran tamaño que cambian de forma dinámica; en este caso, la función *dnn.BlobFromImage* se encarga del preprocesamiento, que incluye la configuración de las dimensiones de la blob (se usa de entrada para la imagen) y la normalización.
