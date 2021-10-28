@@ -32,13 +32,17 @@ En este fichero se realiza la detección y el reconocimiento facial con las libr
 A pesar de las ventajas de cada algoritmo de reconocimiento, ninguno de ellos aporta los resultados necesarios para el proyecto, ya que el reconocimiento suele dar erróneo cuando el programa se ejecuta con imágenes de test fotografiadas en entornos distintos que las imágenes con las que se ha entrenado el modelo.
 
 
-## DetectFaces.py y DetectFaces_Video.py
-Estos dos archivos contienen código casi idéntico, con la diferencia de que uno es para detectar rostros en imágenes y el otro en vídeos, streamings y cámaras externas. Para ello, se utiliza Deep Learning con OpenCV. En este caso, se utiliza un modelo entrenado con Caffe, un marco de aprendizaje profundo creado pensando en la expresión, la velocidad y la modularidad. El código está basado en la explicación de Adrian Rosebrock, en su artículo "Face Detection with OpenCV and deep learning". El detector facial de deep learning de OpenCV se basa en el marco del Single-Shot Detector (SSD) con una red base ResNet.
+## DetectFaces.py
+Estos dos archivos contienen código casi idéntico, con la diferencia de que uno es para detectar rostros en imágenes y el otro en vídeos, streamings y cámaras externas. Para ello, se utiliza Deep Learning con OpenCV, concretamente se hace a partir de un modelo entrenado con TensorFlow. 
 
-Para la ejecución del código, serán necesarios dos tipos de archivos, que deberán especificarse en los parámetros del mismo:
-- .protxt: define la arquitectura del modelo (es decir, las propias capas que forman la Deep Neural Network). Para este proyecto se ha usado el documento deploy.prototxt.txt, extraído del repositorio https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector.
-- .caffemodel: contiene los pesos de las capas de la red neuronal. Para este documento se ha usado el documento res10_300x300_ssd_iter_140000.caffemodel, extraído del repositorio https://github.com/gopinath-balu/computer_vision/blob/master/CAFFE_DNN.
+Para la ejecución del código, serán necesarios dos tipos de archivos:
+- opencv_face_detector_uint8.pb: contiene el modelo.
+- opencv_face_detector.pbtxt: contiene la configuración para el modelo anterior.
+Ambos, extraídos del repositorio https://github.com/deepme987/face-recognition-python
 
-Los resultados del programa proporcionan un enmarque de las caras detectadas en el input, ya sea una imágen o un vídeo, con su respectivo porcentaje de confianza, que indica la seguridad del programa sobre si el rostro detectado es realmente una cara.
+Para el proceso se hace uso de una BLOB (Binary Large Object), que es un elemento que se utiliza para almacenar datos de gran tamaño que cambian de forma dinámica; en este caso, la función *dnn.BlobFromImage* se encarga del preprocesamiento, que incluye la configuración de las dimensiones de la blob (se usa de entrada para la imagen) y la normalización.
+Después, se pasa la blob por la red con *net.setInput(blob)* y se obtienen las detecciones y las predicciones con *net.forward()*. A partir de ahí se hace un bucle sobre las detecciones y se dibujan recuadros alrededor de las caras detectadas.
+
+En el bucle, primeramente, se extrae la confianza (probabilidad) y se compara con el threshold de confianza, para así filtrar las detecciones débiles. Si cumple la condición anterior, se calculan las coordenadas que delimitan el rectángulo del rostro detectado. Se dibuja el rectángulo alrededor del rostro detectado y se muestra el porcentaje de confianza sobre ese rostro, lo cual facilitará mucho las pruebas de detección.
 
 Las conclusiones obtenidas son muy buenas, ya que el programa se ejecuta con rapidez y realiza la detección facial mucho mejor que los métodos empleados hasta el momento, proporcionando mucha más fiabilidad con los falsos positivos y detectando caras orientadas en diferentes ángulos de forma correcta.
