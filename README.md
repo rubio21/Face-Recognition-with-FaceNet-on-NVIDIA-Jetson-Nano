@@ -33,7 +33,7 @@ A pesar de las ventajas de cada algoritmo de reconocimiento, ninguno de ellos ap
 
 
 ## DetectFaces.py y DetectFacesVideo.py
-Estos dos archivos contienen código casi idéntico, con la diferencia de que uno es para detectar rostros en imágenes y el otro en vídeos, streamings y cámaras externas. Para ello, se utiliza Deep Learning con OpenCV, concretamente se hace a partir de un modelo entrenado con TensorFlow. 
+Estos dos archivos contienen código casi idéntico, con la diferencia de que uno es para detectar rostros en imágenes y el otro en vídeos, streamings y cámaras externas. Para ello, se utiliza OpenCV, que tiene un módulo DNN (Deep Neural Network) que permite cargar redes neuronales pre-entrenadas; esto mejora increíblemente la velocidad, reduce la necesidad de dependencias y la mayoría de los modelos tienen un tamaño muy ligero. Se utiliza un modelo preentrenado de Face Detection que permite localizar la cara a partir de una imagen dada.
 
 Para la ejecución del código, serán necesarios dos tipos de archivos:
 - opencv_face_detector_uint8.pb: contiene el modelo.
