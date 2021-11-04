@@ -46,7 +46,7 @@ En el bucle, primeramente, se extrae la confianza (probabilidad) y se compara co
 
 Las conclusiones obtenidas son muy buenas, ya que el programa se ejecuta con rapidez y realiza la detección facial mucho mejor que los métodos empleados hasta el momento, proporcionando mucha más fiabilidad con los falsos positivos y detectando caras orientadas en diferentes ángulos de forma correcta.
 
-## FaceRecognition.py
+## face_recognition.py
 Este fichero contiene el código a partir del cual se realiza el reconocimiento facial, con todas las funcionalidades necesarias para reconocer a personas a partir de imágenes o vídeos.
 
 Los métodos utilizados anteriormente para el reconocimiento de caras implican la necesidad de grandes datos para una sola persona y un tiempo de entrenamiento para cada nueva adición al conjunto de datos. Sin embargo, la mayoría de las técnicas modernas de reconocimiento facial utilizan una alternativa, denominada One-Shot Learning. Este aprendizaje consiste en encontrar la mejor coincidencia del input con los casos de entrenamiento disponibles, en lugar de intentar clasificar la imagen de prueba con un modelo entrenado. Se trata de utilizar una imagen de entrenamiento por clase y comparar la imagen de prueba con todas las imágenes de entrenamiento. Para ello, se utiliza FaceNet: A Unified Embedding for Face Recognition and Clustering, para generar los embeddings y compararlos como sugiere Siamese Neural Networks for One-shot Image Recognition.
