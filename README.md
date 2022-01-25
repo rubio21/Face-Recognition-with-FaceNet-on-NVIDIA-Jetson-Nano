@@ -1,5 +1,5 @@
-# TFG_FaceRecognition
-Este repositorio recoge las pruebas realizadas durante la duración de mi Trabajo de Fin de Grado, el cual está basado en el reconocimiento facial. Se profundizará con diferentes técnicas de detección, procesamiento y reconocimiento del rostro a lo largo del proyecto. El repositorio se actualizará iterativamente con nuevos ficheros y se explicarán las conclusiones obtenidas en el correspondiente README.
+# Face and Speaker Recognition on Jetson Nano
+This repository documents a facial recognition system implemented on an NVIDIA Jetson Nano. To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to IoT devices when recognising a person.
 
 ## Datasets
 Se han escogido dos bases de datos para hacer las pruebas de Face Detection y Face Recognition con imágenes.
