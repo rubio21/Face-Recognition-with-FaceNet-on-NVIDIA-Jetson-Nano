@@ -19,7 +19,7 @@ In this file, face detection and recognition is carried out with the OpenCV and 
 - Haar Cascades (Viola-Jones): This algorithm finds the relevant features of the face from the difference between the sum of the pixels in different regions of the image, the main advantage that has been experienced with this algorithm is its extremely fast detection speed. On the other hand, it is prone to false positives, selecting faces in areas of the image where no face is located. In addition, it is generally less accurate than face detectors based on deep learning.
 - HOG: A feature descriptor that counts gradient orientation occurrences in the localised part of an image. This method is more accurate than the previous one, but computationally it is significantly slower.
 
-<img src="![viola](https://user-images.githubusercontent.com/92673739/151596404-6ff925af-5e06-456e-a18e-04e935f50dbe.jpg)" alt="drawing" width="200"/>
+<img src="![viola](https://user-images.githubusercontent.com/92673739/151596404-6ff925af-5e06-456e-a18e-04e935f50dbe.jpg)"  width="200"/>
 
 
 ![hog](https://user-images.githubusercontent.com/92673739/151596422-bb74b070-c490-4140-9c61-efd4c9c59006.jpg)
