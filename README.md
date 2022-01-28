@@ -12,11 +12,17 @@ LFW contiene cuatro conjuntos diferentes de imágenes, y se ha escogido LFW-a, c
 ### UTK Face
 Este dataset es un conjunto de datos de rostros a gran escala con un amplio rango de edad (entre 0 y 116 años). El conjunto de datos consta de más de 20.000 imágenes faciales con anotaciones de edad, sexo y origen étnico en el nombre de cada fotografía. Las imágenes cubren una gran variación en cuanto a pose, expresión facial, iluminación, oclusión, resolución, etc. A diferencia de la base de datos anterior, las caras fotografiadas de UTK Face son de personas anónimas, y el objetivo es hacer pruebas con la gran variedad de expresiones, etnias y edades de las personas para comprobar hasta dónde es capaz de llegar el detector de rostros.
 
-## FirstTests.py
-En este fichero se realiza la detección y el reconocimiento facial con las librerías OpenCV y dlib. Han sido las primeras pruebas realizadas en el trabajo, por lo que se han utilizado las técnicas más antiguas, que son Haar Cascades (Viola-Jones) y HOG para la detección y EigenFaces, Fisherfaces y LBP para el reconocimiento.
-### Detección facial:
-- Haar Cascades (Viola-Jones): Este algoritmo encuentra las características relevantes del rostro a partir de la diferencia entre la suma de los píxeles de diferentes regiones de la imagen.La principal ventaja que se ha experimentado con este algoritmo es su extremada rapidez para realizar la detección. Por contra, es propenso a los falsos positivos, seleccionando rostros en zonas de la imagen donde no se ubica ninguna cara. Además, en general, es menos preciso que los detectores de rostros basados en deep learning.
-- HOG: Es un descriptor de características que cuenta las incidencias de orientación de gradiente en la parte localizada de una imagen. Este método es más preciso que el anterior, pero computacionalmente es significativamente más lento.
+## first_tests.py
+In this file, face detection and recognition is carried out with the OpenCV and dlib libraries. These are the first tests carried out in the work, so the oldest techniques have been used, which are Haar Cascades (Viola-Jones) and HOG for detection and EigenFaces, Fisherfaces and LBP for recognition.
+
+### Face Detection:
+- Haar Cascades (Viola-Jones): This algorithm finds the relevant features of the face from the difference between the sum of the pixels in different regions of the image, the main advantage that has been experienced with this algorithm is its extremely fast detection speed. On the other hand, it is prone to false positives, selecting faces in areas of the image where no face is located. In addition, it is generally less accurate than face detectors based on deep learning.
+- HOG: A feature descriptor that counts gradient orientation occurrences in the localised part of an image. This method is more accurate than the previous one, but computationally it is significantly slower.
+
+![viola](https://user-images.githubusercontent.com/92673739/151596404-6ff925af-5e06-456e-a18e-04e935f50dbe.jpg)
+![hog](https://user-images.githubusercontent.com/92673739/151596422-bb74b070-c490-4140-9c61-efd4c9c59006.jpg)
+
+
 ### Reconocimiento facial:
 - EigenFaces: Es el método de reconocimiento facial más antiguo y uno de los más simples. Funciona de forma bastante fiable en la mayoría de los entornos controlados. Se obtienen las siguientes conclusiones:
   - Es relativamente rápido.
