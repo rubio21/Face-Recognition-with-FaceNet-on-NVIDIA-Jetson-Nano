@@ -25,7 +25,7 @@ In this file, face detection and recognition is carried out with the OpenCV and 
 
 As can be seen from the results, both algorithms have correctly detected 4 out of 7 possible faces. Viola-Jones provided 5 false positives and HOG only 1, but Viola-Jones ran significantly faster. Both methods have avoided the same faces, two of which are wearing sunglasses and one of which is facing away from the camera.
 
-### Reconocimiento facial:
+### Face recognition:
 - EigenFaces
 - FisherFaces
 - LBPH
