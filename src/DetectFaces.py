@@ -4,13 +4,13 @@ import cv2
 import imutils
 from imutils.video import VideoStream
 import copy
+import numpy as np
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--input', type=str, default=None, help='Path to input file')
-args = parser.parse_args()
+
 
 model_path = "../Models/OpenCV/opencv_face_detector_uint8.pb"
 model_pbtxt = "../Models/OpenCV/opencv_face_detector.pbtxt"
+dataset_path="../faces/"
 
 # Se carga nuestro modelo serializado desde el disco
 net = cv2.dnn.readNetFromTensorflow(model_path, model_pbtxt)
@@ -43,30 +43,48 @@ def DetectFaces(image):
             cv2.rectangle(image, (x1, y1), (x2, y2), (255, 0, 0), 3)
             cv2.putText(image, text, (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
     cv2.imshow("Output", image)
-    return confidence
+    return detections[0, 0, 0, 2]
 
-def DetectFacesVideo(video_path=0, train=False):
-    vs = VideoStream(src=0).start()
+def DetectFacesVideo(video_path, train):
+    image_flip=False
+    if(video_path==None):
+        cap = cv2.VideoCapture(0)
+        image_flip=True
+    else:
+        cap = cv2.VideoCapture(video_path)
     time.sleep(2.0)
-    if (train): confidenceMax = 0.49
+
+    if (train):
+        confidenceMax = 0.49
+        bestFrame=np.zeros([500,500,3])
+
     while True:
-        image = vs.read()
+        ret, image = cap.read()
+        if image_flip: image=cv2.flip(image, 1)
+        if not ret: return
         image = imutils.resize(image, width=400)
-        confidence = DetectFaces(image)
+        confidence = DetectFaces(copy.deepcopy(image))
+
         if (train and confidence>confidenceMax):
             bestFrame=copy.deepcopy(image)
-            confidenceMax=confidence
+            confidenceMax=copy.deepcopy(confidence)
 
         key = cv2.waitKey(1) & 0xFF
         if key == ord("q"):
             break
-    cv2.destroyAllWindows()
 
     if (video_path==0):
         vs.stop()
     if train and confidenceMax > 0.49:
-        cv2.imwrite('../faces/your_name.jpg', bestFrame)
-        print(confidenceMax)
+        cv2.imwrite(dataset_path + 'your_name.jpg', bestFrame)
+
+    cv2.destroyAllWindows()
+   
 
 if __name__ == '__main__':
-    DetectFacesVideo(0, True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input", type=str, default=None, help='Path to input file')
+    parser.add_argument("--train", action="store_true", help="Captures the best face of the video and stores it in the dataset")
+    args = parser.parse_args()
+
+    DetectFacesVideo(args.input, args.train)
