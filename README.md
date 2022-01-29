@@ -5,8 +5,8 @@ This repository documents a facial recognition system implemented on an NVIDIA J
 In this file, face detection and recognition is carried out with the OpenCV and dlib libraries. These are the first tests carried out in the work, so the oldest techniques have been used, which are Haar Cascades (Viola-Jones) and HOG for detection and EigenFaces, Fisherfaces and LBP for recognition.
 
 ### Face Detection:
-- Haar Cascades (Viola-Jones): This algorithm finds the relevant features of the face from the difference between the sum of the pixels in different regions of the image, the main advantage that has been experienced with this algorithm is its extremely fast detection speed. On the other hand, it is prone to false positives, selecting faces in areas of the image where no face is located. In addition, it is generally less accurate than face detectors based on deep learning.
-- HOG: A feature descriptor that counts gradient orientation occurrences in the localised part of an image. This method is more accurate than the previous one, but computationally it is significantly slower.
+- **Haar Cascades (Viola-Jones)**: This algorithm finds the relevant features of the face from the difference between the sum of the pixels in different regions of the image, the main advantage that has been experienced with this algorithm is its extremely fast detection speed. On the other hand, it is prone to false positives, selecting faces in areas of the image where no face is located. In addition, it is generally less accurate than face detectors based on deep learning.
+- **HOG**: A feature descriptor that counts gradient orientation occurrences in the localised part of an image. This method is more accurate than the previous one, but computationally it is significantly slower.
 <p float="left">
   <img src="https://user-images.githubusercontent.com/92673739/151597832-ab7fc224-ca8b-4c1d-b80b-d1a00974cb28.jpg" width="500"/>
   <img src="https://user-images.githubusercontent.com/92673739/151597879-a586a7f5-7a40-4cd1-b926-17c80a8e5217.jpg" width="500"/>
@@ -15,9 +15,9 @@ In this file, face detection and recognition is carried out with the OpenCV and 
 As can be seen from the results, both algorithms have correctly detected 4 out of 7 possible faces. Viola-Jones provided 5 false positives and HOG only 1, but Viola-Jones ran significantly faster. Both methods have avoided the same faces, two of which are wearing sunglasses and one of which is facing away from the camera.
 
 ### Face recognition:
-- EigenFaces
-- FisherFaces
-- LBPH
+- **EigenFaces**
+- **FisherFaces**
+- **LBPH**
 
 The OpenCV library has been used in the experiments carried out. A model has been created for each of the three face recognition procedures described above, based on previously detected faces. For the detected face, a prediction of the most similar being from the training set is generated, associated with a confidence factor. This factor is different for each procedure, so a threshold (thres-hold) has been used to classify a prediction as "unknown" in case it is exceeded, being 4500 in Eigenfaces, 450 in Fisherfaces and 70 in LBP.
 The three options coincide in frequent recognition errors in images with an environment and illumination unequal to those of the training set. In addition, numerous samples of each person are needed to train the patterns, so it takes too much memory and the model takes too long to create. Therefore, these techniques do not provide the necessary reliability and speed.
@@ -25,12 +25,12 @@ The three options coincide in frequent recognition errors in images with an envi
 
 
 ## detect_faces.py
-This file detects faces in an image or video from a Deep Neural Network. The network is used through OpenCV, which includes a DNN module that allows pre-trained neural networks to be loaded; this greatly improves speed, reduces the need for dependencies and most models are very light in size. The neural network used is based on Single-Shot Detector (SSD) with a ResNet base network.
+This file detects faces in an image or video from a Deep Neural Network. The network is used through OpenCV, which includes a DNN module that allows pre-trained neural networks to be loaded; this greatly improves speed, reduces the need for dependencies and most models are very light in size. The neural network used is based on **Single-Shot Detector (SSD)** with a ResNet base network.
 Single-Shot Detector (SSD) is an algorithm that detects the object (face) in a single pass over the input image, unlike other models that traverse it more than once. SSD is based on the use of convolutional networks that produce multiple bounding boxes of various fixed sizes and score the presence of the object in those boxes, followed by a suppression step to produce the final detections.
 
 In the code implementation, the pre-trained model is read through two files and the test images are fed into the network, which returns the detections found. The files are:
-- opencv_face_detector_uint8.pb: contains the model.
-- opencv_face_detector.pbtxt: contains the configuration for the model.
+- **opencv_face_detector_uint8.pb**: contains the model.
+- **opencv_face_detector.pbtxt**: contains the configuration for the model.
 
 The process makes use of a BLOB (Binary Large Object), which is an element used to store dynamically changing large data; in this case, the *dnn.BlobFromImage* function handles the preprocessing, which includes setting the dimensions of the blob (used as input for the image) and normalisation.
 Then, the blob is passed through the network with *net.setInput(blob)* and detections and predictions are obtained with *net.forward()*. For greater precision, the detections obtained are run through and their associated confidence value is compared with a threshold, in order to eliminate the least reliable ones.
