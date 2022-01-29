@@ -1,4 +1,4 @@
-# Face and Speaker Recognition on Jetson Nano
+# Face Recognition with FaceNet on Jetson Nano
 This repository documents a facial recognition system implemented on an NVIDIA Jetson Nano. To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to IoT devices when recognising a person.
 
 ## Datasets
