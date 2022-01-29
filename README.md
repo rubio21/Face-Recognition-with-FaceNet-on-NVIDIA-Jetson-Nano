@@ -1,17 +1,6 @@
 # Face Recognition with FaceNet on Jetson Nano
 This repository documents a facial recognition system implemented on an NVIDIA Jetson Nano. To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to IoT devices when recognising a person.
 
-## Datasets
-Se han escogido dos bases de datos para hacer las pruebas de Face Detection y Face Recognition con imágenes.
-
-### LFW
-Labeled Faces in the Wild es una base de datos de fotografías de caras de celebridades diseñada para estudiar el problema del reconocimiento facial sin restricciones. El conjunto de datos contiene más de 13.000 imágenes de caras recogidas de la web y cada rostro está etiquetado con el nombre de la persona. Los rostros han sido detectados por el detector de rostros Viola-Jones.
-
-LFW contiene cuatro conjuntos diferentes de imágenes, y se ha escogido LFW-a, conjunto en el cual se ha aplicado un método de alineación a las imágenes para facilitar el proceso de detección y reconocimiento.
-
-### UTK Face
-Este dataset es un conjunto de datos de rostros a gran escala con un amplio rango de edad (entre 0 y 116 años). El conjunto de datos consta de más de 20.000 imágenes faciales con anotaciones de edad, sexo y origen étnico en el nombre de cada fotografía. Las imágenes cubren una gran variación en cuanto a pose, expresión facial, iluminación, oclusión, resolución, etc. A diferencia de la base de datos anterior, las caras fotografiadas de UTK Face son de personas anónimas, y el objetivo es hacer pruebas con la gran variedad de expresiones, etnias y edades de las personas para comprobar hasta dónde es capaz de llegar el detector de rostros.
-
 ## first_tests.py
 In this file, face detection and recognition is carried out with the OpenCV and dlib libraries. These are the first tests carried out in the work, so the oldest techniques have been used, which are Haar Cascades (Viola-Jones) and HOG for detection and EigenFaces, Fisherfaces and LBP for recognition.
 
@@ -35,20 +24,22 @@ The three options coincide in frequent recognition errors in images with an envi
 
 
 
-## DetectFaces.py y DetectFacesVideo.py
-Estos dos archivos contienen código casi idéntico, con la diferencia de que uno es para detectar rostros en imágenes y el otro en vídeos, streamings y cámaras externas. Para ello, se utiliza OpenCV, que tiene un módulo DNN (Deep Neural Network) que permite cargar redes neuronales pre-entrenadas; esto mejora increíblemente la velocidad, reduce la necesidad de dependencias y la mayoría de los modelos tienen un tamaño muy ligero. Se utiliza un modelo preentrenado de Face Detection que permite localizar la cara a partir de una imagen dada.
+## detect_faces.py
+This file detects faces in an image or video from a Deep Neural Network. The network is used through OpenCV, which includes a DNN module that allows pre-trained neural networks to be loaded; this greatly improves speed, reduces the need for dependencies and most models are very light in size. The neural network used is based on Single-Shot Detector (SSD) with a ResNet base network.
+Single-Shot Detector (SSD) is an algorithm that detects the object (face) in a single pass over the input image, unlike other models that traverse it more than once. SSD is based on the use of convolutional networks that produce multiple bounding boxes of various fixed sizes and score the presence of the object in those boxes, followed by a suppression step to produce the final detections.
 
-Para la ejecución del código, serán necesarios dos tipos de archivos:
-- opencv_face_detector_uint8.pb: contiene el modelo.
-- opencv_face_detector.pbtxt: contiene la configuración para el modelo anterior.
+In the code implementation, the pre-trained model is read through two files and the test images are fed into the network, which returns the detections found. The files are:
+- opencv_face_detector_uint8.pb: contains the model.
+- opencv_face_detector.pbtxt: contains the configuration for the model.
 
-Para el proceso se hace uso de una BLOB (Binary Large Object), que es un elemento que se utiliza para almacenar datos de gran tamaño que cambian de forma dinámica; en este caso, la función *dnn.BlobFromImage* se encarga del preprocesamiento, que incluye la configuración de las dimensiones de la blob (se usa de entrada para la imagen) y la normalización.
-Después, se pasa la blob por la red con *net.setInput(blob)* y se obtienen las detecciones y las predicciones con *net.forward()*. A partir de ahí se hace un bucle sobre las detecciones y se dibujan recuadros alrededor de las caras detectadas.
+The process makes use of a BLOB (Binary Large Object), which is an element used to store dynamically changing large data; in this case, the *dnn.BlobFromImage* function handles the preprocessing, which includes setting the dimensions of the blob (used as input for the image) and normalisation.
+Then, the blob is passed through the network with *net.setInput(blob)* and detections and predictions are obtained with *net.forward()*. For greater precision, the detections obtained are run through and their associated confidence value is compared with a threshold, in order to eliminate the least reliable ones.
 
-En el bucle, primeramente, se extrae la confianza (probabilidad) y se compara con el threshold de confianza, para así filtrar las detecciones débiles. Si cumple la condición anterior, se calculan las coordenadas que delimitan el rectángulo del rostro detectado. Se dibuja el rectángulo alrededor del rostro detectado y se muestra el porcentaje de confianza sobre ese rostro, lo cual facilitará mucho las pruebas de detección.
+The results obtained have been very good, since an algorithm that greatly improves Viola Jones and HOG is achieved, showing itself to be accurate and robust in the detection of faces with different viewing angles and lighting and occlusion conditions.
 
-Las conclusiones obtenidas son muy buenas, ya que el programa se ejecuta con rapidez y realiza la detección facial mucho mejor que los métodos empleados hasta el momento, proporcionando mucha más fiabilidad con los falsos positivos y detectando caras orientadas en diferentes ángulos de forma correcta.
+<img src="https://user-images.githubusercontent.com/92673739/151672189-fd33fb34-d2ff-4eb2-a6e8-aa611f2a95ef.jpg" width="500"/>
 
+In this example, an accuracy of 100% is obtained. Unlike the previous methods, this algorithm has been able to detect both faces with glasses and the face from the side of the camera.
 ## face_recognition.py
 This file contains the code from which face recognition is performed.
 
