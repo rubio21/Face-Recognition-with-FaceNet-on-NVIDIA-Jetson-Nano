@@ -84,6 +84,6 @@ Two classes: FaceDetection and FaceRecognition.
   - *img_to_embedding()*: Transforms the image entered by parameter into embedding.
   - *load_face_embeddings()*: Traverses the entire dataset to transform the images into vectors and store them in a dictionary.
   - *is_same()*: Compare the difference between two vectors. The distance determines a recognition.
-*face_recognition()*: Use the two classes above to find the faces in an image and recognise them, comparing their embedding with all those in the dictionary.
-*main_program()*: Use *face_recognition()* to get recognitions throughout the video (or image).
-*initialise_led(), change_led()*: Switching the LEDs on and off.
+- *face_recognition()*: Use the two classes above to find the faces in an image and recognise them, comparing their embedding with all those in the dictionary.
+- *main_program()*: Use *face_recognition()* to get recognitions throughout the video (or image).
+- *initialise_led(), change_led()*: Switching the LEDs on and off.
