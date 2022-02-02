@@ -1,1 +1,0 @@
-["Alberto", "Ana", "Claire", "Coen", "Edgar", "Felipe", "Gigi", "Javad", "Joan", "Joost", "Josep", "JuanRamon", "Kevin", "MarcCastello", "Marta", "Mireia", "Miriam", "Nuria", "Poal", "Ramon", "Richard", "Ruben", "Sara", "Sergi"]
