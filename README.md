@@ -49,6 +49,11 @@ Previously used methods for face recognition involve the need for large data for
 Face recognition in the project is done by FaceNet, a system that uses a deep convolutional network. The network is pre-trained through a triple loss function, which encourages vectors of the same person to become more similar (smaller distance) and those of different individuals to become less similar (larger distance).
 The generalised operation of the system consists of transforming each face in the database into a 128-feature vector, which is called embedding. For each entry, the same transformation is applied to the detected faces and their identity with the most similar embedding in the database is predicted (as long as the difference is not greater than a verification threshold).
 
+Results of running face_recognition.py. The left image of each pair is the one located in the dataset and the one on the right is the test image:
+
+<img src="https://user-images.githubusercontent.com/92673739/152239732-aec9413d-c308-4de9-8f94-b73ffade57c4.png" width="500"/>
+
+
 The images of the persons should be included in the folder 'Dataset/' (it is important that no more than one person appears in the same photo). The files containing the pre-trained neural networks are located in the 'FaceDetection/' and 'FaceRecognition/' folders of 'Models/'.
 
 To run the system showing the recognitions:
@@ -68,15 +73,10 @@ If you want to change the path of the dataset or insert an input image or video:
     
 <!--endsec-->
 
-El código contiene las siguientes funciones:
+### Explanation of the code:
 
-  - **load_opencv():** La función toma el directorio del modelo .pb congelado y un archivo .pbtxt para inicializar el DNN Face Detector de OpenCV, explicado en los archivos anteriores.
-  - **load_face_detection():** La función genera (a partir del modelo de Face Detection) un vector de embeddings para una imagen determinada. Estos embeddings consisten en características dentro de la imagen; los datos de la imagen se convierten en datos numéricos que pueden ser utilizados para fines de comparación. El modelo de detección de caras está en forma de gráfico Tensorflow y el archivo *_face_detection.py* contiene las funciones para cargar el modelo directamente desde el directorio. Una vez cargado el modelo, lo inicializamos con los valores por defecto.
-  - **detect_faces(image):** La función toma una imagen como entrada y devuelve una lista que contiene las coordenadas de las caras dentro de la imagen. El proceso completo está explicado en el apartado anterior. En caso de que el modelo no detecte correctamente las imágenes, se puede cambiar el valor del threshold, reduciéndolo si el modelo no es capaz de detectar una cara válida o aumentándolo si detecta otros objetos como cara o detecta caras superpuestas.
-  - **load_face_embeddings(image_dir):** Función que toma el directorio de las imágenes. Un bucle recorre todas las imágenes del directorio, detecta la cara en la imagen con detect_faces y guarda su embedding en el diccionario de embeddings.
-  - **is_same(emb1, emb2):** Compara dos matrices y devuelve la diferencia entre ellas como un valor escalar. La función recibe dos embeddings, correspondientes a las características de dos rostros, y los compara. Retorna un valor booleano determinando si los embeddings se asemejan lo suficiente como para ser la misma persona, utilizando la variable *verification_threshold*. Esta variable se puede modificar según las necesidades; si se encuentra un rostro pero no se reconoce como se esperaba, se aumenta el threshold, y si se reconoce un rostro como persona equivocada, se disminuye.
-  - **fetch_detections(image, embeddings):** Después de tener todos los modelos cargados y los embeddings para las imágenes de entrenamiento calculadas, se puede ejecutar el reconocimiento facial para la imagen entrada. En primer lugar, se detectan las caras dentro de la imagen utilizando detect_faces() y se encuentra su embedding. A continuación, se compara el embedding de la imagen de prueba con cada embedding de la imagen de entrenamiento. Si hay varias detecciones, se ordenan según las diferencias y se asigna la imagen con la menor diferencia con la imagen detectada. Como puede haber más de una cara en la imagen de entrada, el parámetro de detecciones es una matriz.
-  - **face_recognition(image_or_video_path, Bool : display_image, String : face_dir):** Ahora que están definidas todas las funciones, se escribe esta función para envolver todo el proceso. Esta función se encarga de los parámetros, carga los modelos, embeddings, maneja el cambio de imagen, vídeo y webcam y ejecuta la detección basada en la entrada. Se puede llamar a esta función usando un archivo *__main__* que toma los argumentos de la consola y los envía a la función.
+Two classes: FaceDetection and FaceRecognition.
 
-El código de face_recognition.py y *_face_detection.py* ha sido extraído del repositorio https://github.com/deepme987/face-recognition-python
+- FaceDetection:
+  - 
 
