@@ -51,13 +51,22 @@ The generalised operation of the system consists of transforming each face in th
 
 The images of the persons should be included in the folder 'Dataset/' (it is important that no more than one person appears in the same photo). The files containing the pre-trained neural networks are located in the 'FaceDetection/' and 'FaceRecognition/' folders of 'Models/'.
 
+To run the system showing the recognitions:
 <!--sec data-collapse=true ces-->
 
-    >
+    > python face_recognition.py --view
     
 <!--endsec-->
 
+The dataset and streaming capture paths are set by default.
 
+If you want to change the path of the dataset or insert an input image or video:
+
+<!--sec data-collapse=true ces-->
+
+    > python face_recognition.py --input 'your_file_path' --dataset 'your_dataset_path'
+    
+<!--endsec-->
 
 El código contiene las siguientes funciones:
 
