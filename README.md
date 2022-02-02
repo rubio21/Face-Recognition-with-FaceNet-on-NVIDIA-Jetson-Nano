@@ -43,13 +43,13 @@ In this example, an accuracy of 100% is obtained. Unlike the previous methods, t
 
 This file is not executed in the main program, which is *face_recognition.py*. It is convenient to use it when you want to test only the detector, or when you want to save a new person in the database. The program captures the best confidence image provided by SSD from a video or stream and stores it in the faces folder.
 ## face_recognition.py
-This file contains the code from which face recognition is performed.
+This file contains the code from which face detection and face recognition in real time are performed.
 
+Previously used methods for face recognition involve the need for large data for a single person and a training time for each new addition to the dataset. To avoid this drawback we use One-Shot Learning, a computer vision technique that allows the learning of information about faces from a single image, and without the need to re-train the model.
 Face recognition in the project is done by FaceNet, a system that uses a deep convolutional network. The network is pre-trained through a triple loss function, which encourages vectors of the same person to become more similar (smaller distance) and those of different individuals to become less similar (larger distance).
 The generalised operation of the system consists of transforming each face in the database into a 128-feature vector, which is called embedding. For each entry, the same transformation is applied to the detected faces and their identity with the most similar embedding in the database is predicted (as long as the difference is not greater than a verification threshold).
+The files containing the pre-trained neural networks are located in the 'FaceDetection/' and 'FaceRecognition/' folders of 'Models/'.
 
-
-Los métodos utilizados anteriormente para el reconocimiento de caras implican la necesidad de grandes datos para una sola persona y un tiempo de entrenamiento para cada nueva adición al conjunto de datos. Sin embargo, la mayoría de las técnicas modernas de reconocimiento facial utilizan una alternativa, denominada One-Shot Learning. Este aprendizaje consiste en encontrar la mejor coincidencia del input con los casos de entrenamiento disponibles, en lugar de intentar clasificar la imagen de prueba con un modelo entrenado. Se trata de utilizar una imagen de entrenamiento por clase y comparar la imagen de prueba con todas las imágenes de entrenamiento. Para ello, se utiliza FaceNet: A Unified Embedding for Face Recognition and Clustering, para generar los embeddings y compararlos como sugiere Siamese Neural Networks for One-shot Image Recognition.
 
 El código contiene las siguientes funciones:
 
