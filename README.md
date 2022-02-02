@@ -55,15 +55,8 @@ The images of the persons should be included in the folder 'Dataset/' (it is imp
 
 <!--sec data-title="Prompt: Windows" data-id="windows_prompt2" data-collapse=true ces-->
 
-En Windows, probablemente veas un `>`, como éste:
-
-{% filename %}command-line{% endfilename %}
-
     >
     
-
-Echa un vistazo a la sección anterior sobre Linux -- podrás consultar más cuando llegues a PythonAnywhere más adelante en este tutorial.
-
 <!--endsec-->
 
 
