@@ -7,8 +7,8 @@ import numpy as np
 
 
 
-model_path = "../Models/OpenCV/opencv_face_detector_uint8.pb"
-model_pbtxt = "../Models/OpenCV/opencv_face_detector.pbtxt"
+model_path = "../Models/FaceDetection/opencv_face_detector_uint8.pb"
+model_pbtxt = "../Models/FaceDetection/opencv_face_detector.pbtxt"
 dataset_path="../faces/"
 
 # Our serialised model is loaded from disk
