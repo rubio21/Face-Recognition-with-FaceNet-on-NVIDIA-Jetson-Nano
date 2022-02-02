@@ -1,10 +1,11 @@
 # Face Recognition with FaceNet on Jetson Nano
 This repository documents a facial recognition system implemented on an NVIDIA Jetson Nano. To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to IoT devices when recognising a person. The system is designed to be deployable in the real world, and two LEDs are used to simulate an output when a recognition is obtained.
 
-## first_tests.py
+## Code
+### first_tests.py
 In this file, face detection and recognition is carried out with the OpenCV and dlib libraries. These are the first tests carried out in the work, so the oldest techniques have been used, which are Haar Cascades (Viola-Jones) and HOG for detection and EigenFaces, Fisherfaces and LBP for recognition.
 
-### Face Detection:
+#### Face Detection:
 - **Haar Cascades (Viola-Jones)**: This algorithm finds the relevant features of the face from the difference between the sum of the pixels in different regions of the image, the main advantage that has been experienced with this algorithm is its extremely fast detection speed. On the other hand, it is prone to false positives, selecting faces in areas of the image where no face is located. In addition, it is generally less accurate than face detectors based on deep learning.
 - **HOG**: A feature descriptor that counts gradient orientation occurrences in the localised part of an image. This method is more accurate than the previous one, but computationally it is significantly slower.
 <p align="center">
@@ -14,7 +15,7 @@ In this file, face detection and recognition is carried out with the OpenCV and 
 
 As can be seen from the results, both algorithms have correctly detected 4 out of 7 possible faces. Viola-Jones provided 5 false positives and HOG only 1, but Viola-Jones ran significantly faster. Both methods have avoided the same faces, two of which are wearing sunglasses and one of which is facing away from the camera.
 
-### Face recognition:
+#### Face recognition:
 - **EigenFaces**
 - **FisherFaces**
 - **LBPH**
@@ -24,7 +25,7 @@ The three options coincide in frequent recognition errors in images with an envi
 
 
 
-## detect_faces.py
+### detect_faces.py
 This file detects faces in an image or video from a Deep Neural Network. The network is used through OpenCV, which includes a DNN module that allows pre-trained neural networks to be loaded; this greatly improves speed, reduces the need for dependencies and most models are very light in size. The neural network used is based on **Single-Shot Detector (SSD)** with a ResNet base network.
 Single-Shot Detector (SSD) is an algorithm that detects the object (face) in a single pass over the input image, unlike other models that traverse it more than once. SSD is based on the use of convolutional networks that produce multiple bounding boxes of various fixed sizes and score the presence of the object in those boxes, followed by a suppression step to produce the final detections.
 
@@ -42,7 +43,7 @@ The results obtained have been very good, since an algorithm that greatly improv
 In this example, an accuracy of 100% is obtained. Unlike the previous methods, this algorithm has been able to detect both faces with glasses and the face from the side of the camera.
 
 This file is not executed in the main program, which is *face_recognition.py*. It is convenient to use it when you want to test only the detector, or when you want to save a new person in the database. The program captures the best confidence image provided by SSD from a video or stream and stores it in the faces folder.
-## face_recognition.py
+### face_recognition.py
 This file contains the code from which face detection and face recognition in real time are performed.
 
 Previously used methods for face recognition involve the need for large data for a single person and a training time for each new addition to the dataset. To avoid this drawback we use **One-Shot Learning**, a computer vision technique that allows the learning of information about faces from a single image, and without the need to re-train the model.
@@ -72,7 +73,7 @@ If you want to change the path of the dataset or insert an input image or video:
     
 <!--endsec-->
 
-### Explanation of the code:
+#### Explanation of the code:
 
 Two classes: FaceDetection and FaceRecognition.
 
@@ -87,3 +88,20 @@ Two classes: FaceDetection and FaceRecognition.
 - *face_recognition()*: Use the two classes above to find the faces in an image and recognise them, comparing their embedding with all those in the dictionary.
 - *main_program()*: Use *face_recognition()* to get recognitions throughout the video (or image).
 - *initialise_led(), change_led()*: Switching the LEDs on and off.
+
+## Considerations:
+
+In view of the current COVID-19 situation, it is essential to wear a mask. In the case of wanting to implement the system, it must be considered that it is not able to recognise a person wearing a mask if their image in the dataset is with their face uncovered.
+
+In order to be able to use it even with masks, the image must be added to the database. An experiment has been carried out using an image with a mask and without a mask in the database for each person, and the accuracy was 0.98.
+
+It should also be noted that when adding images with a mask to the dataset, the system is more prone to false positives, as the neural network extracts fewer features and can easily be confused with another person who is also wearing a mask.
+
+T-SNE has been used to display the 128 feature vectors in a 2-dimensional space. In the first plot 650 unmasked images of 25 people are used, and in the second plot 650 unmasked and 650 masked images of the same people are used.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/92673739/152246538-94dcde75-544a-4a41-8b25-a3fa137d7039.png" width="300"/>
+  <img src="https://user-images.githubusercontent.com/92673739/152246723-00458161-f84e-474a-8968-bc91baadf3b3.png" width="300"/>
+</p>
+
+As can be seen, in the first graph, 25 groupings are made, corresponding to the 25 existing people, due to the similarity of their embeddings. On the other hand, in the second graph, 50 groupings are made, despite the fact that they are the same people. This shows that, by using a mask, the face is covered too much, and the embeddings are so different that the neural network thinks it is another person. Therefore, an unfamiliar person could be mistaken for a familiar person simply by wearing a mask.
