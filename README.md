@@ -1,5 +1,5 @@
 # Face Recognition with FaceNet on Jetson Nano
-This repository documents a facial recognition system implemented on an NVIDIA Jetson Nano. To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to IoT devices when recognising a person.
+This repository documents a facial recognition system implemented on an NVIDIA Jetson Nano. To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to IoT devices when recognising a person. The system is designed to be deployable in the real world, and two LEDs are used to simulate an output when a recognition is obtained.
 
 ## first_tests.py
 In this file, face detection and recognition is carried out with the OpenCV and dlib libraries. These are the first tests carried out in the work, so the oldest techniques have been used, which are Haar Cascades (Viola-Jones) and HOG for detection and EigenFaces, Fisherfaces and LBP for recognition.
@@ -53,7 +53,7 @@ Results of running face_recognition.py with *Labeled Faces in the Wild* images. 
 <p align="center"> <img src="https://user-images.githubusercontent.com/92673739/152239732-aec9413d-c308-4de9-8f94-b73ffade57c4.png" width="500"/> </p>
 
 
-The images of the persons should be included in the folder 'Dataset/' (it is important that no more than one person appears in the same photo). The files containing the pre-trained neural networks are located in the 'FaceDetection/' and 'FaceRecognition/' folders of 'Models/'.
+The images of the persons should be included in the folder 'Dataset/' (it is important that no more than one person appears in the same photo). The files containing the pre-trained neural networks are located in the 'FaceDetection/' and 'FaceRecognition/' folders of 'Models/'. If you are not interested in the illumination of the LEDs, you have to comment the *initialise_led()* and *change_led()* functions so that there are no errors.
 
 To run the system showing the recognitions:
 <!--sec data-collapse=true ces-->
