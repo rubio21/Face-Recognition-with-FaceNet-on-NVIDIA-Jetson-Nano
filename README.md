@@ -58,7 +58,7 @@ The images of the persons should be included in the folder 'Dataset/' (it is imp
 To run the system showing the recognitions:
 <!--sec data-collapse=true ces-->
 
-    > python face_recognition.py --view
+    $ python face_recognition.py --view
     
 <!--endsec-->
 
@@ -68,7 +68,7 @@ If you want to change the path of the dataset or insert an input image or video:
 
 <!--sec data-collapse=true ces-->
 
-    > python face_recognition.py --input 'your_file_path' --dataset 'your_dataset_path'
+    $ python face_recognition.py --input 'your_file_path' --dataset 'your_dataset_path'
     
 <!--endsec-->
 
