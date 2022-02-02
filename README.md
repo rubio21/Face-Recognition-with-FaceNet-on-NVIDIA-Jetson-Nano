@@ -42,13 +42,13 @@ The results obtained have been very good, since an algorithm that greatly improv
 
 In this example, an accuracy of 100% is obtained. Unlike the previous methods, this algorithm has been able to detect both faces with glasses and the face from the side of the camera.
 
-This file is not executed in the main program, which is *face_recognition.py*. It is convenient to use it when you want to test only the detector, or when you want to save a new person in the database. The program captures the best confidence image provided by SSD from a video or stream and stores it in the faces folder.
+This file is not executed in the main program, which is *face_recognition.py*. It is convenient to use it when you want to test only the detector, or when you want to save a new person in the dataset. The program captures the best confidence image provided by SSD from a video or stream and stores it in the faces folder.
 ### face_recognition.py
 This file contains the code from which face detection and face recognition in real time are performed.
 
 Previously used methods for face recognition involve the need for large data for a single person and a training time for each new addition to the dataset. To avoid this drawback we use **One-Shot Learning**, a computer vision technique that allows the learning of information about faces from a single image, and without the need to re-train the model.
 Face recognition in the project is done by **FaceNet**, a system that uses a deep convolutional network. The network is pre-trained through a triple loss function, which encourages vectors of the same person to become more similar (smaller distance) and those of different individuals to become less similar (larger distance).
-The generalised operation of the system consists of transforming each face in the database into a 128-feature vector, which is called embedding. For each entry, the same transformation is applied to the detected faces and their identity with the most similar embedding in the database is predicted (as long as the difference is not greater than a verification threshold).
+The generalised operation of the system consists of transforming each face in the dataset into a 128-feature vector, which is called embedding. For each entry, the same transformation is applied to the detected faces and their identity with the most similar embedding in the dataset is predicted (as long as the difference is not greater than a verification threshold).
 
 Results of running face_recognition.py with *Labeled Faces in the Wild* images. The left image of each pair is the one located in the dataset and the one on the right is the test image:
 <p align="center"> <img src="https://user-images.githubusercontent.com/92673739/152239732-aec9413d-c308-4de9-8f94-b73ffade57c4.png" width="500"/> </p>
@@ -93,7 +93,7 @@ Two classes: FaceDetection and FaceRecognition.
 
 In view of the current COVID-19 situation, it is essential to wear a mask. In the case of wanting to implement the system, it must be considered that it is not able to recognise a person wearing a mask if their image in the dataset is with their face uncovered.
 
-In order to be able to use it even with masks, the image must be added to the database. An experiment has been carried out using an image with a mask and without a mask in the database for each person, and the accuracy was 0.98.
+In order to be able to use it even with masks, the image must be added to the dataset. An experiment has been carried out using an image with a mask and without a mask in the dataset for each person, and the accuracy was 0.98.
 
 It should also be noted that when adding images with a mask to the dataset, the system is more prone to false positives, as the neural network extracts fewer features and can easily be confused with another person who is also wearing a mask.
 
