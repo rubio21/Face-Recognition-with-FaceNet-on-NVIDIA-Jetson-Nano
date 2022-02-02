@@ -7,7 +7,7 @@ In this file, face detection and recognition is carried out with the OpenCV and 
 ### Face Detection:
 - **Haar Cascades (Viola-Jones)**: This algorithm finds the relevant features of the face from the difference between the sum of the pixels in different regions of the image, the main advantage that has been experienced with this algorithm is its extremely fast detection speed. On the other hand, it is prone to false positives, selecting faces in areas of the image where no face is located. In addition, it is generally less accurate than face detectors based on deep learning.
 - **HOG**: A feature descriptor that counts gradient orientation occurrences in the localised part of an image. This method is more accurate than the previous one, but computationally it is significantly slower.
-<p float="left">
+<p align="center">
   <img src="https://user-images.githubusercontent.com/92673739/151597832-ab7fc224-ca8b-4c1d-b80b-d1a00974cb28.jpg" width="500"/>
   <img src="https://user-images.githubusercontent.com/92673739/151597879-a586a7f5-7a40-4cd1-b926-17c80a8e5217.jpg" width="500"/>
 </p>
@@ -37,7 +37,7 @@ Then, the blob is passed through the network with *net.setInput(blob)* and detec
 
 The results obtained have been very good, since an algorithm that greatly improves Viola Jones and HOG is achieved, showing itself to be accurate and robust in the detection of faces with different viewing angles and lighting and occlusion conditions.
 
-<img src="https://user-images.githubusercontent.com/92673739/151672189-fd33fb34-d2ff-4eb2-a6e8-aa611f2a95ef.jpg" width="500"/>
+<p align="center"> <img src="https://user-images.githubusercontent.com/92673739/151672189-fd33fb34-d2ff-4eb2-a6e8-aa611f2a95ef.jpg" width="500"/> </p>
 
 In this example, an accuracy of 100% is obtained. Unlike the previous methods, this algorithm has been able to detect both faces with glasses and the face from the side of the camera.
 
