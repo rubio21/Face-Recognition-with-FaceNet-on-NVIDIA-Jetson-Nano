@@ -45,11 +45,11 @@ This file is not executed in the main program, which is *face_recognition.py*. I
 ## face_recognition.py
 This file contains the code from which face detection and face recognition in real time are performed.
 
-Previously used methods for face recognition involve the need for large data for a single person and a training time for each new addition to the dataset. To avoid this drawback we use One-Shot Learning, a computer vision technique that allows the learning of information about faces from a single image, and without the need to re-train the model.
-Face recognition in the project is done by FaceNet, a system that uses a deep convolutional network. The network is pre-trained through a triple loss function, which encourages vectors of the same person to become more similar (smaller distance) and those of different individuals to become less similar (larger distance).
+Previously used methods for face recognition involve the need for large data for a single person and a training time for each new addition to the dataset. To avoid this drawback we use **One-Shot Learning**, a computer vision technique that allows the learning of information about faces from a single image, and without the need to re-train the model.
+Face recognition in the project is done by **FaceNet**, a system that uses a deep convolutional network. The network is pre-trained through a triple loss function, which encourages vectors of the same person to become more similar (smaller distance) and those of different individuals to become less similar (larger distance).
 The generalised operation of the system consists of transforming each face in the database into a 128-feature vector, which is called embedding. For each entry, the same transformation is applied to the detected faces and their identity with the most similar embedding in the database is predicted (as long as the difference is not greater than a verification threshold).
 
-Results of running face_recognition.py. The left image of each pair is the one located in the dataset and the one on the right is the test image:
+Results of running face_recognition.py with *Labeled Faces in the Wild* images. The left image of each pair is the one located in the dataset and the one on the right is the test image:
 <p align="center"> <img src="https://user-images.githubusercontent.com/92673739/152239732-aec9413d-c308-4de9-8f94-b73ffade57c4.png" width="500"/> </p>
 
 
@@ -76,6 +76,14 @@ If you want to change the path of the dataset or insert an input image or video:
 
 Two classes: FaceDetection and FaceRecognition.
 
-- FaceDetection:
-  - 
-
+- **FaceDetection:** Detects and calculates the location coordinates of faces located in an image with **Single-Shot Detector (SSD)**.
+  - *load_face_detection()*: Load the face detection model.
+  - *detect_faces()*: Detect faces in an image.
+- **FaceRecognition:** It processes the faces detected by *FaceDetector* to extract their features and convert them into a 128-feature vector with **FaceNet**.
+  - *load_face_recognition()*: Load the face recognition model.
+  - *img_to_embedding()*: Transforms the image entered by parameter into embedding.
+  - *load_face_embeddings()*: Traverses the entire dataset to transform the images into vectors and store them in a dictionary.
+  - *is_same()*: Compare the difference between two vectors. The distance determines a recognition.
+*face_recognition()*: Use the two classes above to find the faces in an image and recognise them, comparing their embedding with all those in the dictionary.
+*main_program()*: Use *face_recognition()* to get recognitions throughout the video (or image).
+*initialise_led(), change_led()*: Switching the LEDs on and off.
