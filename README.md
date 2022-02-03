@@ -1,7 +1,7 @@
 # Face Recognition with FaceNet on Jetson Nano
 This repository documents a facial recognition system implemented on an NVIDIA Jetson Nano. To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to IoT devices when recognising a person. The system is designed to be deployable in the real world, and two LEDs are used to simulate an output when a recognition is obtained.
 
-## Code
+## Face Recognition
 ### first_tests.py
 In this file, face detection and recognition is carried out with the OpenCV and dlib libraries. These are the first tests carried out in the work, so the oldest techniques have been used, which are Haar Cascades (Viola-Jones) and HOG for detection and EigenFaces, Fisherfaces and LBP for recognition.
 
