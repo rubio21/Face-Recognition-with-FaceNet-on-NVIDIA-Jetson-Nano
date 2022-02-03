@@ -147,6 +147,7 @@ T-SNE has been used to display the 128 feature vectors in a 2-dimensional space.
 
 As can be seen, in the first graph, 25 groupings are made, corresponding to the 25 existing people, due to the similarity of their embeddings. On the other hand, in the second graph, 50 groupings are made, despite the fact that they are the same people. This shows that, by using a mask, the face is covered too much, and the embeddings are so different that the neural network thinks it is another person. Therefore, an unfamiliar person could be mistaken for a familiar person simply by wearing a mask.
 <hr/>
+
 ### Program to capture video and audio
 
 In the 'src/' folder, the *record_video_audio.py* file is also provided, with which you can save audio, video, or both at the same time. The program contains the classes AudioRecorder() and VideoRecorder() for recording. *PyAudio* library is used for audio and *Cv2* for video.
