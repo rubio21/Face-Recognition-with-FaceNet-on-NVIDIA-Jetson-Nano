@@ -126,3 +126,19 @@ Speaker recognition is implemented with *Librosa*, a Python package for audio an
 The extracted features are processed with *Sklearn* and will be the input to the pre-feed neural network, created with *Keras*. The SoftMax activation function is used to categorise the audios. The model is compiled with categorical cross-entropy as a loss function and the adam gradient descent algorithm as an optimiser.
 For real-time audio retrieval, the *PyAudio* library is used, with which 32000 fps fragments are listened to and a prediction is made every seven seconds.
 
+To run the programme, it is necessary to have created a model beforehand. To do this, you must have included your audio material in the folders 'train/' and 'validation/' in the folder 'Audios/'; all samples from the same person must be named the same, with a character at the end of the name to distinguish them. For the first run:
+
+<!--sec data-collapse=true ces-->
+
+    $ python speaker_recognition.py --train
+    
+<!--endsec-->
+
+The program will create the neural network and save all the necessary models in the folder 'Models/Audios/' to be loaded in a future run. To run the program without retraining the model:
+
+<!--sec data-collapse=true ces-->
+
+    $ python speaker_recognition.py
+    
+<!--endsec-->
+
