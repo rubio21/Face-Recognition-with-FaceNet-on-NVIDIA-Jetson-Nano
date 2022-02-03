@@ -37,8 +37,8 @@ This file detects faces in an image or video from a Deep Neural Network. The net
 Single-Shot Detector (SSD) is an algorithm that detects the object (face) in a single pass over the input image, unlike other models that traverse it more than once. SSD is based on the use of convolutional networks that produce multiple bounding boxes of various fixed sizes and score the presence of the object in those boxes, followed by a suppression step to produce the final detections.
 
 In the code implementation, the pre-trained model is read through two files and the test images are fed into the network, which returns the detections found. The files are:
-- **opencv_face_detector_uint8.pb**: contains the model.
-- **opencv_face_detector.pbtxt**: contains the configuration for the model.
+- *opencv_face_detector_uint8.pb*: contains the model.
+- *opencv_face_detector.pbtxt*: contains the configuration for the model.
 
 The process makes use of a BLOB (Binary Large Object), which is an element used to store dynamically changing large data; in this case, the *dnn.BlobFromImage* function handles the preprocessing, which includes setting the dimensions of the blob (used as input for the image) and normalisation.
 Then, the blob is passed through the network with *net.setInput(blob)* and detections and predictions are obtained with *net.forward()*. For greater precision, the detections obtained are run through and their associated confidence value is compared with a threshold, in order to eliminate the least reliable ones.
@@ -117,16 +117,16 @@ As can be seen, in the first graph, 25 groupings are made, corresponding to the 
 ## Speaker Recognition: *speaker_recognition.py*
 
 Speaker recognition is implemented with *Librosa*, a Python package for audio and music analysis that provides the basic components needed to create auditory information retrieval systems. The features extracted from each audio are:
-- MFCCs: coeﬁcients for ha-bla representation. They extract features from the components of an audio signal that are suitable for the identification of relevant content and ignore those with information that hinders the recognition process.
+- MFCCs: coeﬁcients for speech representation. They extract features from the components of an audio signal that are suitable for the identification of relevant content and ignore those with information that hinders the recognition process.
 - Chroma diagram: a tool for categorising the pitch of voices. There are twelve different pitch classes.
-- Mel-scaled spectrogram : the spectrogram is the result of the calculation of several spectra in superimposed ven-tana segments of the signal, through the Short-time Fourier Transform (stft). The frequencies of this spectrogram are converted to the mel scale, a perceptual musical scale of tones.
+- Mel-scaled spectrogram: the spectrogram is the result of the calculation of several spectra in superimposed window segments of the signal, through the Short-time Fourier Transform (stft). The frequencies of this spectrogram are converted to the mel scale, a perceptual musical scale of tones.
 - Spectral contrast: the average energy in the upper quantile with that in the lower quantile of each subband into which the spectrogram is divided.
 - Tonal centroid: is a representation that projects chromatic features in 6 dimensions. 
 
-The extracted features are processed with *Sklearn* and will be the input to the pre-feed neural network, created with *Keras*. The SoftMax activation function is used to categorise the audios. The model is compiled with categorical cross-entropy as a loss function and the adam gradient descent algorithm as an optimiser.
-For real-time audio retrieval, the *PyAudio* library is used, with which 32000 fps fragments are listened to and a prediction is made every seven seconds.
+The extracted features are processed with *Sklearn* and will be the input to the feed forward neural network, created with *Keras*. The SoftMax activation function is used to categorise the audios. The model is compiled with categorical cross-entropy as a loss function and the adam gradient descent algorithm as an optimiser.
+For real-time audio retrieval, the *PyAudio* library is used, with which 32000 fps fragments are listened to and a prediction is made every 7 seconds.
 
-To run the programme, it is necessary to have created a model beforehand. To do this, you must have included your audio material in the folders 'train/' and 'validation/' in the folder 'Audios/'; all samples from the same person must be named the same, with a character at the end of the name to distinguish them. You can add as many audio files to the training and validation sets as you wish. The quantity and quality of the files you include will determine the accuracy of the system. For the first run:
+To run the program, it is necessary to have created a model beforehand. To do this, you must have included your audio material in the folders 'train/' and 'validation/' in the folder 'Audios_dataset/'; all samples from the same person must be named the same, with a character at the end of the name to distinguish them. You can add as many audio files to the training and validation sets as you wish. The quantity and quality of the files you include will determine the accuracy of the system. For the first run:
 
 <!--sec data-collapse=true ces-->
 
@@ -142,3 +142,4 @@ The program will create the neural network and save all the necessary models in 
     
 <!--endsec-->
 
+Each time a new person is added to the audio dataset, the model will have to be retrained.
