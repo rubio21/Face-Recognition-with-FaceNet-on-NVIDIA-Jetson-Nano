@@ -97,23 +97,6 @@ Two classes: FaceDetection and FaceRecognition.
 - *main_program()*: Use *face_recognition()* to get recognitions throughout the video (or image).
 - *initialise_led(), change_led()*: Switching the LEDs on and off.
 
-## Considerations:
-
-In view of the current COVID-19 situation, it is essential to wear a mask. In the case of wanting to implement the system, it must be considered that it is not able to recognise a person wearing a mask if their image in the dataset is with their face uncovered.
-
-In order to be able to use it even with masks, the image must be added to the dataset. An experiment has been carried out using an image with a mask and without a mask in the dataset for each person, and the accuracy was 0.98.
-
-It should also be noted that when adding images with a mask to the dataset, the system is more prone to false positives, as the neural network extracts fewer features and can easily be confused with another person who is also wearing a mask.
-
-T-SNE has been used to display the 128 feature vectors in a 2-dimensional space. In the first plot 650 unmasked images of 25 people are used, and in the second plot 650 unmasked and 650 masked images of the same people are used.
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/92673739/152246538-94dcde75-544a-4a41-8b25-a3fa137d7039.png" width="300"/>
-  <img src="https://user-images.githubusercontent.com/92673739/152246723-00458161-f84e-474a-8968-bc91baadf3b3.png" width="300"/>
-</p>
-
-As can be seen, in the first graph, 25 groupings are made, corresponding to the 25 existing people, due to the similarity of their embeddings. On the other hand, in the second graph, 50 groupings are made, despite the fact that they are the same people. This shows that, by using a mask, the face is covered too much, and the embeddings are so different that the neural network thinks it is another person. Therefore, an unfamiliar person could be mistaken for a familiar person simply by wearing a mask.
-
 
 ## Speaker Recognition: *speaker_recognition.py*
 
@@ -144,3 +127,25 @@ The program will create the neural network and save all the necessary models in 
 <!--endsec-->
 
 Each time a new person is added to the audio dataset, the model will have to be retrained.
+
+
+## Considerations:
+### Face mask in face recognition with FaceNet
+
+In view of the current COVID-19 situation, it is essential to wear a mask. In the case of wanting to implement the system, it must be considered that it is not able to recognise a person wearing a mask if their image in the dataset is with their face uncovered.
+
+In order to be able to use it even with masks, the image must be added to the dataset. An experiment has been carried out using an image with a mask and without a mask in the dataset for each person, and the accuracy was 0.98.
+
+It should also be noted that when adding images with a mask to the dataset, the system is more prone to false positives, as the neural network extracts fewer features and can easily be confused with another person who is also wearing a mask.
+
+T-SNE has been used to display the 128 feature vectors in a 2-dimensional space. In the first plot 650 unmasked images of 25 people are used, and in the second plot 650 unmasked and 650 masked images of the same people are used.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/92673739/152246538-94dcde75-544a-4a41-8b25-a3fa137d7039.png" width="300"/>
+  <img src="https://user-images.githubusercontent.com/92673739/152246723-00458161-f84e-474a-8968-bc91baadf3b3.png" width="300"/>
+</p>
+
+As can be seen, in the first graph, 25 groupings are made, corresponding to the 25 existing people, due to the similarity of their embeddings. On the other hand, in the second graph, 50 groupings are made, despite the fact that they are the same people. This shows that, by using a mask, the face is covered too much, and the embeddings are so different that the neural network thinks it is another person. Therefore, an unfamiliar person could be mistaken for a familiar person simply by wearing a mask.
+
+### Program to capture video and audio
+
