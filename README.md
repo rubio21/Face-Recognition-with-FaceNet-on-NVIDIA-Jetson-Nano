@@ -1,13 +1,13 @@
 # Face Recognition with FaceNet on Jetson Nano
 This repository documents a facial recognition system implemented on an NVIDIA Jetson Nano. To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to IoT devices when recognising a person. In my case, I use the Logitech HD Pro C920 camera to obtain the images and sounds and two LEDs to simulate an output when a recognition is obtained.
-The programme can also be used on your personal computer, obtaining the images via the integrated webcam and without the need to illuminate LEDs.
+The program can also be used on your personal computer, obtaining the images via the integrated webcam and without the need to illuminate LEDs.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/92673739/152345376-8a5bf484-c6e1-4eec-87f3-931892c8a8c9.jpg" width="300"/>
 </p>
 
 ## Face Recognition
-The experiments are divided into face detection and face recognition algorithms. Both are started with older techniques (Viola-Jones and HOG in face detection and Eigenfaces, Fisherfaces and LBPH in face recognition). After obtaining and comparing the results, Single-Shot Detector and FaceNet are used for the final programme.
+The experiments are divided into face detection and face recognition algorithms. Both are started with older techniques (Viola-Jones and HOG in face detection and Eigenfaces, Fisherfaces and LBPH in face recognition). After obtaining and comparing the results, Single-Shot Detector and FaceNet are used for the final program.
 
 ### first_tests.py
 In this file, face detection and recognition is carried out with the OpenCV and dlib libraries. These are the first tests carried out in the work, so the oldest techniques have been used, which are Haar Cascades (Viola-Jones) and HOG for detection and EigenFaces, Fisherfaces and LBP for recognition.
@@ -121,7 +121,7 @@ Speaker recognition is implemented with *Librosa*, a Python package for audio an
 - Chroma diagram: a tool for categorising the pitch of voices. There are twelve different pitch classes.
 - Mel-scaled spectrogram: the spectrogram is the result of the calculation of several spectra in superimposed window segments of the signal, through the Short-time Fourier Transform (stft). The frequencies of this spectrogram are converted to the mel scale, a perceptual musical scale of tones.
 - Spectral contrast: the average energy in the upper quantile with that in the lower quantile of each subband into which the spectrogram is divided.
-- Tonal centroid: is a representation that projects chromatic features in 6 dimensions. 
+- Tonal centroid features: is a representation that projects chromatic features in 6 dimensions. 
 
 The extracted features are processed with *Sklearn* and will be the input to the feed forward neural network, created with *Keras*. The SoftMax activation function is used to categorise the audios. The model is compiled with categorical cross-entropy as a loss function and the adam gradient descent algorithm as an optimiser.
 For real-time audio retrieval, the *PyAudio* library is used, with which 32000 fps fragments are listened to and a prediction is made every 7 seconds.
