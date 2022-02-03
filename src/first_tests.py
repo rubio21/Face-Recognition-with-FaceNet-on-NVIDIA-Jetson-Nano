@@ -10,7 +10,6 @@ dataPath = 'your_data_path'
 faceClassif = cv2.CascadeClassifier('../Models/firstTests/haarcascade_frontalface_default.xml')
 hogFaceDetector = dlib.get_frontal_face_detector()
 
-
 # Function to detect faces in an image
 def FaceDetection(image, method):
     x,y,w,h=0,0,0,0
