@@ -32,7 +32,7 @@ The three options coincide in frequent recognition errors in images with an envi
 
 
 
-### detect_faces.py
+### *detect_faces.py*
 This file detects faces in an image or video from a Deep Neural Network. The network is used through OpenCV, which includes a DNN module that allows pre-trained neural networks to be loaded; this greatly improves speed, reduces the need for dependencies and most models are very light in size. The neural network used is based on **Single-Shot Detector (SSD)** with a ResNet base network.
 Single-Shot Detector (SSD) is an algorithm that detects the object (face) in a single pass over the input image, unlike other models that traverse it more than once. SSD is based on the use of convolutional networks that produce multiple bounding boxes of various fixed sizes and score the presence of the object in those boxes, followed by a suppression step to produce the final detections.
 
@@ -50,7 +50,8 @@ The results obtained have been very good, since an algorithm that greatly improv
 In this example, an accuracy of 100% is obtained. Unlike the previous methods, this algorithm has been able to detect both faces with glasses and the face from the side of the camera.
 
 This file is not executed in the main program, which is *face_recognition.py*. It is convenient to use it when you want to test only the detector, or when you want to save a new person in the dataset. The program captures the best confidence image provided by SSD from a video or stream and stores it in the faces folder.
-### face_recognition.py
+
+### *face_recognition.py*
 This file contains the code from which face detection and face recognition in real time are performed.
 
 Previously used methods for face recognition involve the need for large data for a single person and a training time for each new addition to the dataset. To avoid this drawback we use **One-Shot Learning**, a computer vision technique that allows the learning of information about faces from a single image, and without the need to re-train the model.
