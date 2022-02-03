@@ -2,7 +2,7 @@
 This repository documents a facial recognition system implemented on an NVIDIA Jetson Nano. To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to IoT devices when recognising a person. In my case, I use the Logitech HD Pro C920 camera to obtain the images and sounds and two LEDs to simulate an output when a recognition is obtained.
 The programme can also be used on your personal computer, obtaining the images via the integrated webcam and without the need to illuminate LEDs.
 
-<p align="right">
+<p align="center">
   <img src="https://user-images.githubusercontent.com/92673739/152345376-8a5bf484-c6e1-4eec-87f3-931892c8a8c9.jpg" width="300"/>
 </p>
 
