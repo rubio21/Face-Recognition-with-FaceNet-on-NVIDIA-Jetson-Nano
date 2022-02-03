@@ -7,6 +7,8 @@ The programme can also be used on your personal computer, obtaining the images v
 </p>
 
 ## Face Recognition
+The experiments are divided into face detection and face recognition algorithms. Both are started with older techniques (Viola-Jones and HOG in face detection and Eigenfaces, Fisherfaces and LBPH in face recognition). After obtaining and comparing the results, Single-Shot Detector and FaceNet are used for the final programme.
+
 ### first_tests.py
 In this file, face detection and recognition is carried out with the OpenCV and dlib libraries. These are the first tests carried out in the work, so the oldest techniques have been used, which are Haar Cascades (Viola-Jones) and HOG for detection and EigenFaces, Fisherfaces and LBP for recognition.
 
@@ -110,3 +112,17 @@ T-SNE has been used to display the 128 feature vectors in a 2-dimensional space.
 </p>
 
 As can be seen, in the first graph, 25 groupings are made, corresponding to the 25 existing people, due to the similarity of their embeddings. On the other hand, in the second graph, 50 groupings are made, despite the fact that they are the same people. This shows that, by using a mask, the face is covered too much, and the embeddings are so different that the neural network thinks it is another person. Therefore, an unfamiliar person could be mistaken for a familiar person simply by wearing a mask.
+
+
+## Speaker Recognition: *speaker_recognition.py*
+
+Speaker recognition is implemented with *Librosa*, a Python package for audio and music analysis that provides the basic components needed to create auditory information retrieval systems. The features extracted from each audio are:
+- MFCCs: coeﬁcients for ha-bla representation. They extract features from the components of an audio signal that are suitable for the identification of relevant content and ignore those with information that hinders the recognition process.
+- Chroma diagram: a tool for categorising the pitch of voices. There are twelve different pitch classes.
+- Mel-scaled spectrogram : the spectrogram is the result of the calculation of several spectra in superimposed ven-tana segments of the signal, through the Short-time Fourier Transform (stft). The frequencies of this spectrogram are converted to the mel scale, a perceptual musical scale of tones.
+- Spectral contrast: the average energy in the upper quantile with that in the lower quantile of each subband into which the spectrogram is divided.
+- Tonal centroid: is a representation that projects chromatic features in 6 dimensions. 
+
+The extracted features are processed with *Sklearn* and will be the input to the pre-feed neural network, created with *Keras*. The SoftMax activation function is used to categorise the audios. The model is compiled with categorical cross-entropy as a loss function and the adam gradient descent algorithm as an optimiser.
+For real-time audio retrieval, the *PyAudio* library is used, with which 32000 fps fragments are listened to and a prediction is made every seven seconds.
+
