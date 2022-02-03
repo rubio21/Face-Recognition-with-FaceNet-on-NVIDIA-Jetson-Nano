@@ -149,3 +149,21 @@ As can be seen, in the first graph, 25 groupings are made, corresponding to the 
 
 ### Program to capture video and audio
 
+In the 'src/' folder, the *record_video_audio.py* file is also provided, with which you can save audio, video, or both at the same time. The program contains the classes AudioRecorder() and VideoRecorder() for recording. *PyAudio* library is used for audio and *Cv2* for video.
+
+To record audio:
+<!--sec data-collapse=true ces-->
+    $ python record_video_audio.py --record_audio --time duration_in_seconds    
+<!--endsec-->
+
+To record video:
+<!--sec data-collapse=true ces-->
+    $ python record_video_audio.py --record_video --time duration_in_seconds
+<!--endsec-->
+
+To record video and audio:
+<!--sec data-collapse=true ces-->
+    $ python record_video_audio.py --record_video_and_audio --time duration_in_seconds
+<!--endsec-->
+
+The data entered for the audio input are those corresponding to the camera used in this project, which has an integrated microphone. If you use another device, it is likely to give you errors and you will have to change the parameters.
