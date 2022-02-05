@@ -6,23 +6,28 @@ The program can also be used on your personal computer, obtaining the images via
 
 <p>
     <img src="https://user-images.githubusercontent.com/92673739/152345376-8a5bf484-c6e1-4eec-87f3-931892c8a8c9.jpg" width="300" align="right"/>
-
-  
-- Face Recognition
-  - *first_tests.py*
-  - *detect_faces.py*
-  - *face_recognition.py*
-- Speaker Recognition
-  - *speaker_recognition.py*
-- Considerations
-  - Face mask in face recognition with FaceNet
-  - Program to capture video and audio
-
+    <ul>
+        <li> <a name="fr"> Face Recognition </a></li>
+        <ul>
+            <li> *first_tests.py* </li>
+            <li> *detect_faces.py* </li>
+            <li> *face_recognition.py* </li>
+        </ul>
+        <li> Speaker Recognition </li>
+        <ul>
+            <li> *speaker_recognition.py* </li>
+        </ul>
+        <li> Considerations </li>
+        <ul>
+            <li> Face mask in face recognition with FaceNet </li>
+            <li> Program to capture video and audio </li>
+        </ul>
+        </ul>
 
   
 </p>
 
-## Face Recognition
+<h2 id="fr"> Face Recognition </h2>
 The experiments are divided into face detection and face recognition algorithms. Both are started with older techniques (Viola-Jones and HOG in face detection and Eigenfaces, Fisherfaces and LBPH in face recognition). After obtaining and comparing the results, Single-Shot Detector and FaceNet are used for the final program.
 
 ### *first_tests.py*
