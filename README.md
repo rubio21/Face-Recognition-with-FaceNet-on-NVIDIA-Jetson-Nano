@@ -4,6 +4,7 @@ The program can also be used on your personal computer, obtaining the images via
 
 <h2> Table of contents </h2>
 
+<p>
 - Face Recognition
   - *first_tests.py*
   - *detect_faces.py*
@@ -14,7 +15,7 @@ The program can also be used on your personal computer, obtaining the images via
   - Face mask in face recognition with FaceNet
   - Program to capture video and audio
 
-<p>
+
   <img src="https://user-images.githubusercontent.com/92673739/152345376-8a5bf484-c6e1-4eec-87f3-931892c8a8c9.jpg" width="300" align="right"/>
   
 </p>
