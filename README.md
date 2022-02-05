@@ -120,7 +120,7 @@ Two classes: FaceDetection and FaceRecognition.
 - *initialise_led(), change_led()*: Switching the LEDs on and off.
 
 
-<h3 id="sr"> Speaker Recognition: <i> speaker_recognition.py </i></h3>
+<h2 id="sr"> Speaker Recognition: <i> speaker_recognition.py </i></h2>
 
 Speaker recognition is implemented with *Librosa*, a Python package for audio and music analysis that provides the basic components needed to create auditory information retrieval systems. The features extracted from each audio are:
 - MFCCs: coeﬁcients for speech representation. They extract features from the components of an audio signal that are suitable for the identification of relevant content and ignore those with information that hinders the recognition process.
@@ -151,8 +151,8 @@ The program will create the neural network and save all the necessary models in 
 Each time a new person is added to the audio dataset, the model will have to be retrained.
 
 
-<h3 id="co"> Considerations: </h2>
-<h2 id="co1"> Face mask in face recognition with FaceNet </h3>
+<h2 id="co"> Considerations: </h2>
+<h3 id="co1"> Face mask in face recognition with FaceNet </h3>
 
 In view of the current COVID-19 situation, it is essential to wear a mask. In the case of wanting to implement the system, it must be considered that it is not able to recognise a person wearing a mask if their image in the dataset is with their face uncovered.
 
@@ -169,7 +169,7 @@ T-SNE has been used to display the 128 feature vectors in a 2-dimensional space.
 
 As can be seen, in the first graph, 25 groupings are made, corresponding to the 25 existing people, due to the similarity of their embeddings. On the other hand, in the second graph, 50 groupings are made, despite the fact that they are the same people. This shows that, by using a mask, the face is covered too much, and the embeddings are so different that the neural network thinks it is another person. Therefore, an unfamiliar person could be mistaken for a familiar person simply by wearing a mask.
 
-<h2 id="co2"> Program to capture video and audio </h3>
+<h3 id="co2"> Program to capture video and audio </h3>
 
 In the 'src/' folder, the *record_video_audio.py* file is also provided, with which you can save audio, video, or both at the same time. The program contains the classes AudioRecorder() and VideoRecorder() for recording. *PyAudio* library is used for audio and *Cv2* for video.
 
