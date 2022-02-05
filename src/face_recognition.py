@@ -4,11 +4,11 @@ import argparse
 import numpy as np
 import tensorflow.compat.v1 as tf
 import copy
-# import Jetson.GPIO as GPIO
+import Jetson.GPIO as GPIO
 
 
 tf.disable_eager_execution()
-# led_pin=[7,11]
+led_pin=[7,11]
 verification_threshold = 0.8
 led_state = False
 image_size = 160
@@ -130,34 +130,36 @@ def face_recognition(image, embeddings, face_detector, face_recognizer, show=Fal
         detected = {k: v for k, v in sorted(detected.items(), key=lambda item: item[1])}
         detected = list(detected.keys())
         if len(detected) > 0:
-            # change_led(True)
+            change_led(True)
             # The embedding with the shortest distance is selected to predict the identity.
             detections.append(detected[0])
             # A rectangle is drawn around the face, next to the name of the recognised person.
             if show:
                 cv2.rectangle(image, (x, y), (x + w, y + h), (255, 0, 0), 2)
                 cv2.putText(image, detected[0], (x, y - 4), cv2.FONT_HERSHEY_TRIPLEX, 2.5, (255, 0, 0), 2)
+        else:
+            change_led(False)
     # Displayed on screen (if specified by parameter)
     if show:
         cv2.imshow("Detected", cv2.resize(image, (300, 300)))
     return detections
 
 
-# def initialise_led():
-# GPIO.setmode(GPIO.board)
-# GPIO.setup(led_pin, GPIO.OUT)
-# # Red LED on and green LED off
-# GPIO.output(led_pin, (GPIO.HIGH, GPIO.HIGH))
+def initialise_led():
+    GPIO.setmode(GPIO.board)
+    GPIO.setup(led_pin, GPIO.OUT)
+    # Red LED on and green LED off
+    GPIO.output(led_pin, (GPIO.HIGH, GPIO.HIGH))
 
-# def change_led(green_state):
-#     if (led_state and green_state):
-#         # Green LED off
-#         GPIO.output(led_pin, (GPIO.HIGH, GPIO.HIGH))
-#         led_state=False
-#     else:
-#         # Green LED on
-#         GPIO.output(led_pin, (GPIO.LOW, GPIO.LOW))
-#         led_state=True
+def change_led(green_state):
+    if (led_state and green_state):
+        # Green LED off
+        GPIO.output(led_pin, (GPIO.HIGH, GPIO.HIGH))
+        led_state=False
+    else:
+        # Green LED on
+        GPIO.output(led_pin, (GPIO.LOW, GPIO.LOW))
+        led_state=True
 
 
 # Function to be called in the main
@@ -188,12 +190,11 @@ def main_program(image_or_video_path=None, show=False, dataset="../faces/"):
             print("Finished detection")
             return
         print(face_recognition(image, embeddings, fd, fr, show))
-
-        # # End of program by pressing 'Q'
-        # if cv2.waitKey(waitkey_variable) & 0xFF == ord("q"):
-        #     # Both LEDs off
-        #     GPIO.output(led_pin, (GPIO.HIGH, GPIO.LOW))
-        #     break
+        # End of program by pressing 'Q'
+        if cv2.waitKey(waitkey_variable) & 0xFF == ord("q"):
+            # Both LEDs off
+            GPIO.output(led_pin, (GPIO.HIGH, GPIO.LOW))
+            break
     cap.release()
     cv2.destroyAllWindows()
 
@@ -203,5 +204,5 @@ if __name__ == '__main__':
     parser.add_argument("--show", action="store_true", help="Show mage or video")
     parser.add_argument('--dataset', type=str, default="../Dataset/", help='Path to dataset')
     args = parser.parse_args()
-
+    initialise_led()
     main_program(args.input, args.show, args.dataset)
