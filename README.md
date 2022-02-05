@@ -9,18 +9,18 @@ The program can also be used on your personal computer, obtaining the images via
     <ul>
         <li> <a href=#fr> Face Recognition </a></li>
         <ul>
-            <li> *first_tests.py* </li>
-            <li> *detect_faces.py* </li>
-            <li> *face_recognition.py* </li>
+            <li> <a href=#fr1> <i> first_tests.py </i> </a> </li>
+            <li> <a href=#fr2> <i> detect_faces.py </i> </a> </li>
+            <li> <a href=#fr3> <i> face_recognition.py </i> </a> </li>
         </ul>
-        <li> Speaker Recognition </li>
+        <li> <a href=#sr> Speaker Recognition </li>
         <ul>
-            <li> *speaker_recognition.py* </li>
+            <li> <i> speaker_recognition.py </i> </a> </li>
         </ul>
-        <li> Considerations </li>
+        <li> <a href=#co> Considerations </a> </li>
         <ul>
-            <li> Face mask in face recognition with FaceNet </li>
-            <li> Program to capture video and audio </li>
+            <li> <a href=#co1> Face mask in face recognition with FaceNet </a> </li>
+            <li> <a href=#co2> Program to capture video and audio </a> </li>
         </ul>
         </ul>
 
@@ -30,7 +30,7 @@ The program can also be used on your personal computer, obtaining the images via
 <h2 id="fr"> Face Recognition </h2>
 The experiments are divided into face detection and face recognition algorithms. Both are started with older techniques (Viola-Jones and HOG in face detection and Eigenfaces, Fisherfaces and LBPH in face recognition). After obtaining and comparing the results, Single-Shot Detector and FaceNet are used for the final program.
 
-### *first_tests.py*
+<h3 id="fr1"> <i> first_tests.py </i></h3>
 In this file, face detection and recognition is carried out with the OpenCV and dlib libraries. These are the first tests carried out in the work, so the oldest techniques have been used, which are Haar Cascades (Viola-Jones) and HOG for detection and EigenFaces, Fisherfaces and LBP for recognition.
 
 #### Face Detection:
@@ -53,7 +53,8 @@ The three options coincide in frequent recognition errors in images with an envi
 
 
 
-### *detect_faces.py*
+<h3 id="fr2"> <i> detect_faces.py </i></h3>
+
 This file detects faces in an image or video from a Deep Neural Network. The network is used through OpenCV, which includes a DNN module that allows pre-trained neural networks to be loaded; this greatly improves speed, reduces the need for dependencies and most models are very light in size. The neural network used is based on **Single-Shot Detector (SSD)** with a ResNet base network.
 Single-Shot Detector (SSD) is an algorithm that detects the object (face) in a single pass over the input image, unlike other models that traverse it more than once. SSD is based on the use of convolutional networks that produce multiple bounding boxes of various fixed sizes and score the presence of the object in those boxes, followed by a suppression step to produce the final detections.
 
@@ -72,7 +73,7 @@ In this example, an accuracy of 100% is obtained. Unlike the previous methods, t
 
 This file is not executed in the main program, which is *face_recognition.py*. It is convenient to use it when you want to test only the detector, or when you want to save a new person in the dataset. The program captures the best confidence image provided by SSD from a video or stream and stores it in the faces folder.
 
-### *face_recognition.py*
+<h3 id="fr3"> <i> face_recognition.py </i></h3>
 This file contains the code from which face detection and face recognition in real time are performed.
 
 Previously used methods for face recognition involve the need for large data for a single person and a training time for each new addition to the dataset. To avoid this drawback we use **One-Shot Learning**, a computer vision technique that allows the learning of information about faces from a single image, and without the need to re-train the model.
@@ -119,7 +120,7 @@ Two classes: FaceDetection and FaceRecognition.
 - *initialise_led(), change_led()*: Switching the LEDs on and off.
 
 
-## Speaker Recognition: *speaker_recognition.py*
+<h3 id="sr"> Speaker Recognition: <i> speaker_recognition.py </i></h3>
 
 Speaker recognition is implemented with *Librosa*, a Python package for audio and music analysis that provides the basic components needed to create auditory information retrieval systems. The features extracted from each audio are:
 - MFCCs: coeﬁcients for speech representation. They extract features from the components of an audio signal that are suitable for the identification of relevant content and ignore those with information that hinders the recognition process.
@@ -150,8 +151,8 @@ The program will create the neural network and save all the necessary models in 
 Each time a new person is added to the audio dataset, the model will have to be retrained.
 
 
-## Considerations:
-### Face mask in face recognition with FaceNet
+<h3 id="co"> Considerations: </h2>
+<h2 id="co1"> Face mask in face recognition with FaceNet </h3>
 
 In view of the current COVID-19 situation, it is essential to wear a mask. In the case of wanting to implement the system, it must be considered that it is not able to recognise a person wearing a mask if their image in the dataset is with their face uncovered.
 
@@ -169,7 +170,7 @@ T-SNE has been used to display the 128 feature vectors in a 2-dimensional space.
 As can be seen, in the first graph, 25 groupings are made, corresponding to the 25 existing people, due to the similarity of their embeddings. On the other hand, in the second graph, 50 groupings are made, despite the fact that they are the same people. This shows that, by using a mask, the face is covered too much, and the embeddings are so different that the neural network thinks it is another person. Therefore, an unfamiliar person could be mistaken for a familiar person simply by wearing a mask.
 <hr/>
 
-### Program to capture video and audio
+<h2 id="co2"> Program to capture video and audio </h3>
 
 In the 'src/' folder, the *record_video_audio.py* file is also provided, with which you can save audio, video, or both at the same time. The program contains the classes AudioRecorder() and VideoRecorder() for recording. *PyAudio* library is used for audio and *Cv2* for video.
 
