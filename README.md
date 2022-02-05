@@ -7,7 +7,7 @@ The program can also be used on your personal computer, obtaining the images via
 <p>
     <img src="https://user-images.githubusercontent.com/92673739/152345376-8a5bf484-c6e1-4eec-87f3-931892c8a8c9.jpg" width="300" align="right"/>
     <ul>
-        <li> <a href="fr"> Face Recognition </a></li>
+        <li> <a href=#fr> Face Recognition </a></li>
         <ul>
             <li> *first_tests.py* </li>
             <li> *detect_faces.py* </li>
