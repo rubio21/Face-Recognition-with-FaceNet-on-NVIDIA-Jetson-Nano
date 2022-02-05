@@ -1,1 +1,1 @@
-Audio models will create automatically.
+Audio models will create automatically with *speaker_recognition.py*.
