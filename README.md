@@ -168,7 +168,6 @@ T-SNE has been used to display the 128 feature vectors in a 2-dimensional space.
 </p>
 
 As can be seen, in the first graph, 25 groupings are made, corresponding to the 25 existing people, due to the similarity of their embeddings. On the other hand, in the second graph, 50 groupings are made, despite the fact that they are the same people. This shows that, by using a mask, the face is covered too much, and the embeddings are so different that the neural network thinks it is another person. Therefore, an unfamiliar person could be mistaken for a familiar person simply by wearing a mask.
-<hr/>
 
 <h2 id="co2"> Program to capture video and audio </h3>
 
