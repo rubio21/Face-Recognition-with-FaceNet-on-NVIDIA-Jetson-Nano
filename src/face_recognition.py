@@ -160,7 +160,7 @@ def change_led(green_state):
 
 
 # Function to be called in the main
-def main_program(image_or_video_path=None, show=False, dataset="../faces/"):
+def main_program(image_or_video_path=None, show=False, dataset="../Dataset/"):
     fd = FaceDetection()
     fr = FaceRecognition()
     # Dataset embeddings
