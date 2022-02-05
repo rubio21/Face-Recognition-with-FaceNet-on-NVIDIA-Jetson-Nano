@@ -70,7 +70,7 @@ The results obtained have been very good, since an algorithm that greatly improv
 
 In this example, an accuracy of 100% is obtained. Unlike the previous methods, this algorithm has been able to detect both faces with glasses and the face from the side of the camera.
 
-This file is not executed in the main program, which is *face_recognition.py*. It is convenient to use it when you want to test only the detector, or when you want to save a new person in the dataset. The program captures the best confidence image provided by SSD from a video or stream and stores it in the faces folder.
+It is convenient to use this file when you want to test only the detector, or when you want to save a new person in the dataset. The program captures the best confidence image provided by SSD from a video or stream and stores it in the faces folder.
 
 <h3 id="fr3"> <i> face_recognition.py </i></h3>
 This file contains the code from which face detection and face recognition in real time are performed.
