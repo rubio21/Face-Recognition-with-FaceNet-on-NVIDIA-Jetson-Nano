@@ -61,9 +61,7 @@ def extract_features(files, option=None, training=False):
 	mel = np.mean(librosa.feature.melspectrogram(X, sr=sample_rate).T, axis=0)
 	contrast = np.mean(librosa.feature.spectral_contrast(S=stft, sr=sample_rate).T, axis=0)
 	tonnetz = np.mean(librosa.feature.tonnetz(y=librosa.effects.harmonic(X), sr=sample_rate).T, axis=0)
-	
 	return mfccs, chroma, mel, contrast, tonnetz
-
 
 # All numerical features from each file are concatenated to obtain a single 193-number matrix for input into the neural network.
 def concatenate_features(df, features):
@@ -97,14 +95,10 @@ def show_graphic(history):
 def prepare_data():
 	train_df = load_df("train")
 	validation_df = load_df("validation")
-
 	train_features = train_df.apply(extract_features, option='train', training=True, axis=1)
 	X_train, y_train = concatenate_features(train_df, train_features)
-
 	val_features = validation_df.apply(extract_features, option='validation', training=True, axis=1)
 	X_val, y_val = concatenate_features(validation_df, val_features)
-
-
 	lb = LabelEncoder()
 	train_unique = np.unique(y_train).tolist()
 	with open('../Models/Audio/persons.txt','w') as outfile:
@@ -116,8 +110,6 @@ def prepare_data():
 	X_val = ss.transform(X_val)
 	dump(ss, '../Models/Audio/SC_Model.bin', compress=True)
 	return X_train, X_val, y_train, y_val, lb
-
-
 
 def train_model(X_train, X_val, y_train, y_val):
 	# A simple dense model with Early stopping and softmax is built for categorical classification.
@@ -133,7 +125,6 @@ def train_model(X_train, X_val, y_train, y_val):
 	model.add(Dense(np.size(y_train[0]), activation='softmax'))
 	model.compile(loss='categorical_crossentropy', metrics=['accuracy'], optimizer='adam')
 	early_stop = EarlyStopping(monitor='val_loss', min_delta=0, patience=100, verbose=1, mode='auto')
-
 	history = model.fit(X_train, y_train, batch_size=256, epochs=200,
                         validation_data=(X_val, y_val),
                         callbacks=[early_stop])
@@ -188,9 +179,6 @@ def real_time(model):
 			data = stream.read(32000, exception_on_overflow=False)
 			audio_frames.append(data)
 			c+=1
-
-
-		
 	stream.stop_stream()
 	stream.close()
 	p.terminate()
