@@ -4,7 +4,6 @@ This repository documents a face recognition system implemented on an NVIDIA Jet
 Extras that are not integrated into the interface:
 To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to devices when recognising a person. In my case, I use the Logitech HD Pro C920 camera to get the images and sounds and two LEDs to simulate an output when a recognition is obtained.
 
-Translated with www.DeepL.com/Translator (free version)
 
 <h2> Table of contents </h2>
 
