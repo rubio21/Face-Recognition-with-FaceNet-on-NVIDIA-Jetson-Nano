@@ -1,6 +1,10 @@
 # Face Recognition with FaceNet on NVIDIA Jetson Nano
-This repository documents a facial recognition system implemented on an NVIDIA Jetson Nano. To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to devices when recognising a person. In my case, I use the Logitech HD Pro C920 camera to obtain the images and sounds and two LEDs to simulate an output when a recognition is obtained.
-The program can also be used on your personal computer, obtaining the images via the integrated webcam and without the need to illuminate LEDs.
+This repository documents a face recognition system implemented on an NVIDIA Jetson Nano. An interface has been designed, with the aim of integrating the system into a television to display live recognitions. The system does not perform any further functionality beyond recognising people, but it could be integrated into an entry and exit system such as an automatic door, as the NVIDIA Jetson Nano is capable of performing these actions.
+
+Extras that are not integrated into the interface:
+To complement the recognition system, a speaker recognition algorithm is developed. The Jetson Nano is used to be able to send outputs to devices when recognising a person. In my case, I use the Logitech HD Pro C920 camera to get the images and sounds and two LEDs to simulate an output when a recognition is obtained.
+
+Translated with www.DeepL.com/Translator (free version)
 
 <h2> Table of contents </h2>
 
