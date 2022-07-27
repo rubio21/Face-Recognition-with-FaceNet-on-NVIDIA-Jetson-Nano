@@ -37,7 +37,8 @@ To complement the recognition system, a speaker recognition algorithm is develop
 The main functionality of the project can be found in the <i> interface.py </i> and <a href=#fr3> <i> face_recognition.py </i> </a> files, the rest of the files in the repository are the result of tests and implementations that have been carried out during the project until the development of the final program.
 
 By executing the <i> interface.py </i> file, all the necessary models for face detection and recognition will be loaded and the 'Dataset/' directory will be processed to generate the feature vectors of all the people that the system must know. The default appearance of the interface is as follows:
-<br/>
+<br /> <br />
+
 <p align="center"> <img src="https://user-images.githubusercontent.com/92673739/181227266-771d178d-8e93-4cac-9c6b-0b1e38e35843.png" width="700"/> </p>
 
 The interface displays the live content captured by the camera and a list of all people who have been recognised. To add more interaction and feedback with the users, the interface has 4 buttons:
