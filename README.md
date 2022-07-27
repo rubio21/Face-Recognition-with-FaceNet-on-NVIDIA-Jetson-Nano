@@ -40,6 +40,7 @@ By executing the <i> interface.py </i> file, all the necessary models for face d
 <br /> <br />
 
 <p align="center"> <img src="https://user-images.githubusercontent.com/92673739/181227266-771d178d-8e93-4cac-9c6b-0b1e38e35843.png" width="700"/> </p>
+<br /> <br />
 
 The interface displays the live content captured by the camera and a list of all people who have been recognised. To add more interaction and feedback with the users, the interface has 4 buttons:
 - 'Take a photo': To expand the dataset, the functionality to add a new person during the run has been developed. The program recommends removing glasses to avoid future confusion, makes sure that there is no more than one face at the moment of taking the photo and checks that the person is close enough to the camera. It counts down from 5 seconds to take the picture, provided all conditions are met.
@@ -51,7 +52,9 @@ The interface displays the live content captured by the camera and a list of all
 As soon as a person stands in front of the camera and is recognised by the system, the interface will change its appearance: <br /> <br />
 
 <p align="center"> <img src="https://user-images.githubusercontent.com/92673739/181227262-6e391e38-95ac-4c14-b345-62eb097708b7.png" width="700"/> </p>
+<br /> <br />
 
+The list of recognised persons will disappear to show the image of the recognised person and a welcome message. When this person has left and a few seconds have passed, the interface will return to its initial state and redisplay the list, including this person.
 
 
 <h2 id="fr"> Face Recognition </h2>
