@@ -35,7 +35,7 @@ The main functionality of the project can be found in the <i> interface.py </i> 
 
 By executing the <i> interface.py </i> file, all the necessary models for face detection and recognition will be loaded and the 'Dataset/' directory will be processed to generate the feature vectors of all the people that the system must know. The default appearance of the interface is as follows:
 
-<img src="https://user-images.githubusercontent.com/92673739/181227266-771d178d-8e93-4cac-9c6b-0b1e38e35843.png" width="500"/>
+<p align="center"> <img src="https://user-images.githubusercontent.com/92673739/181227266-771d178d-8e93-4cac-9c6b-0b1e38e35843.png" width="800"/> </p>
 
 #[home2](https://user-images.githubusercontent.com/92673739/181227262-6e391e38-95ac-4c14-b345-62eb097708b7.png)
 
