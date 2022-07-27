@@ -47,7 +47,7 @@ The interface displays the live content captured by the camera and a list of all
 - 'Exit': Clicking on this button will terminate the execution.
 
 <h3> Recognition of a person </h3>
-As soon as a person stands in front of the camera and is recognised by the system, the interface will change its appearance: <br />
+As soon as a person stands in front of the camera and is recognised by the system, the interface will change its appearance: <br /> <br />
 
 <p align="center"> <img src="https://user-images.githubusercontent.com/92673739/181227262-6e391e38-95ac-4c14-b345-62eb097708b7.png" width="700"/> </p>
 
