@@ -99,7 +99,7 @@ Results of running face_recognition.py with *Labeled Faces in the Wild* images. 
 <p align="center"> <img src="https://user-images.githubusercontent.com/92673739/152239732-aec9413d-c308-4de9-8f94-b73ffade57c4.png" width="500"/> </p>
 
 
-The images of the persons should be included in the folder 'Dataset/' (it is important that no more than one person appears in the same photo). The files containing the pre-trained neural networks are located in the 'FaceDetection/' and 'FaceRecognition/' folders of 'Models/'. If you are not interested in the illumination of the LEDs, you have to comment the *initialise_led()* and *change_led()* functions so that there are no errors.
+The images of the persons should be included in the folder 'Dataset/' (it is important that no more than one person appears in the same photo). The files containing the pre-trained neural networks are located in the 'FaceDetection/' and 'FaceRecognition/' folders of 'Models/'.
 
 To run the system showing the recognitions:
 <!--sec data-collapse=true ces-->
@@ -132,10 +132,9 @@ Two classes: FaceDetection and FaceRecognition.
   - *is_same()*: Compare the difference between two vectors. The distance determines a recognition.
 - *face_recognition()*: Use the two classes above to find the faces in an image and recognise them, comparing their embedding with all those in the dictionary.
 - *main_program()*: Use *face_recognition()* to get recognitions throughout the video (or image).
-- *initialise_led(), change_led()*: Switching the LEDs on and off.
 
 
-<h2 id="sr"> Speaker Recognition: <i> speaker_recognition.py </i></h2>
+<h2 id="sr"> Speaker Recognition: </h2>
 
 Speaker recognition is implemented with *Librosa*, a Python package for audio and music analysis that provides the basic components needed to create auditory information retrieval systems. The features extracted from each audio are:
 - MFCCs: coeﬁcients for speech representation. They extract features from the components of an audio signal that are suitable for the identification of relevant content and ignore those with information that hinders the recognition process.
