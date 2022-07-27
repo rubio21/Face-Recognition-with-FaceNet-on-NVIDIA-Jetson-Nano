@@ -38,16 +38,20 @@ The main functionality of the project can be found in the <i> interface.py </i> 
 
 By executing the <i> interface.py </i> file, all the necessary models for face detection and recognition will be loaded and the 'Dataset/' directory will be processed to generate the feature vectors of all the people that the system must know. The default appearance of the interface is as follows:
 
-
 <p align="center"> <img src="https://user-images.githubusercontent.com/92673739/181227266-771d178d-8e93-4cac-9c6b-0b1e38e35843.png" width="700"/> </p>
-
-#[home2](https://user-images.githubusercontent.com/92673739/181227262-6e391e38-95ac-4c14-b345-62eb097708b7.png)
 
 The interface displays the live content captured by the camera and a list of all people who have been recognised. To add more interaction and feedback with the users, the interface has 4 buttons:
 - 'Take a photo': To expand the dataset, the functionality to add a new person during the run has been developed. The program recommends removing glasses to avoid future confusion, makes sure that there is no more than one face at the moment of taking the photo and checks that the person is close enough to the camera. It counts down from 5 seconds to take the picture, provided all conditions are met.
 - 'Report error': Users can report an error they have observed, which will be saved in a '.txt' in the 'errors/' folder.
 - 'Contribute an improvement': Users can report an idea they have come up with to improve the program, which will be saved in a '.txt' file in the 'improvements/' folder.
 - 'Exit': Clicking on this button will terminate the execution.
+
+<h3> Recognition of a person </h3>
+As soon as a person stands in front of the camera and is recognised by the system, the interface will change its appearance:
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/92673739/181227262-6e391e38-95ac-4c14-b345-62eb097708b7.png" width="700"/> </p>
+
+
 
 <h2 id="fr"> Face Recognition </h2>
 The experiments are divided into face detection and face recognition algorithms. Both are started with older techniques (Viola-Jones and HOG in face detection and Eigenfaces, Fisherfaces and LBPH in face recognition). After obtaining and comparing the results, Single-Shot Detector and FaceNet are used for the final program.
