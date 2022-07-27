@@ -34,7 +34,7 @@ To complement the recognition system, a speaker recognition algorithm is develop
 </p>
 
 <h2 id="mp"> Main program: interface and face recognition </h2>
-The main functionality of the project can be found in the <i> interface.py </i> and <i> face_recognition.py </i> files, the rest of the files in the repository are the result of tests and implementations that have been carried out during the project until the development of the final program.
+The main functionality of the project can be found in the <i> interface.py </i> and <i id="fr3"> face_recognition.py </i> files, the rest of the files in the repository are the result of tests and implementations that have been carried out during the project until the development of the final program.
 
 By executing the <i> interface.py </i> file, all the necessary models for face detection and recognition will be loaded and the 'Dataset/' directory will be processed to generate the feature vectors of all the people that the system must know. The default appearance of the interface is as follows:
 
