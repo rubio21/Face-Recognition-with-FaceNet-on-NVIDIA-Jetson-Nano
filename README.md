@@ -11,6 +11,8 @@ To complement the recognition system, a speaker recognition algorithm is develop
 <p>
     <img src="https://user-images.githubusercontent.com/92673739/152345376-8a5bf484-c6e1-4eec-87f3-931892c8a8c9.jpg" width="300" align="right"/>
     <ul>
+        <li> <a href=#mp> Main program: interface and face recognition </a></li>
+
         <li> <a href=#fr> Face Recognition </a></li>
         <ul>
             <li> <a href=#fr1> <i> first_tests.py </i> </a> </li>
