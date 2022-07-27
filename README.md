@@ -11,10 +11,10 @@ To complement the recognition system, a speaker recognition algorithm is develop
 <p>
     <img src="https://user-images.githubusercontent.com/92673739/152345376-8a5bf484-c6e1-4eec-87f3-931892c8a8c9.jpg" width="300" align="right"/>
     <ul>
-        <li> <a href=#mmp> Main program: interface and face recognition </a> </li>
+        <li> <a href=#mp> Main program: interface and face recognition </a> </li>
         <li> <a href=#fr> Face Recognition </a></li>
         <ul>
-            <li> <a href=#fr1> <i> first_tests.py </i> </a> </li>
+            <li> <a! href=#fr1> <i> first_tests.py </i> </a> </li>
             <li> <a href=#fr2> <i> detect_faces.py </i> </a> </li>
             <li> <a href=#fr3> <i> face_recognition.py </i> </a> </li>
         </ul>
@@ -28,9 +28,17 @@ To complement the recognition system, a speaker recognition algorithm is develop
             <li> <a href=#co2> Program to capture video and audio </a> </li>
         </ul>
         </ul>
-
-  
 </p>
+
+<h2 id="mp"> Main program: interface and face recognition </h2>
+The main functionality of the project can be found in the <i> interface.py </i> and <i> face_recognition.py </i> files, the rest of the files in the repository are the result of tests and implementations that have been carried out during the project until the development of the final program.
+
+By executing the <i> interface.py </i> file, all the necessary models for face detection and recognition will be loaded and the 'Dataset/' directory will be processed to generate the feature vectors of all the people that the system must know. The default appearance of the interface is as follows:
+
+<img src="https://user-images.githubusercontent.com/92673739/181227266-771d178d-8e93-4cac-9c6b-0b1e38e35843.png" width="500"/>
+
+#[home2](https://user-images.githubusercontent.com/92673739/181227262-6e391e38-95ac-4c14-b345-62eb097708b7.png)
+
 
 <h2 id="fr"> Face Recognition </h2>
 The experiments are divided into face detection and face recognition algorithms. Both are started with older techniques (Viola-Jones and HOG in face detection and Eigenfaces, Fisherfaces and LBPH in face recognition). After obtaining and comparing the results, Single-Shot Detector and FaceNet are used for the final program.
